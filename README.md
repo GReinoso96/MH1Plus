@@ -58,6 +58,7 @@ MH1Plus is an improvement patch for Monster Hunter (North America, PS2) Game Cod
   * Tutorial Button has been moved to L3 from Δ.
   * Map Zoom Button has been moved to R3 from Select.
   * Only □ Button can sheathe now.
+  * Camera can be controlled with the Right Analog Stick as well as the D-Pad.
 ## Great Sword
   * Δ Button: Forwards Slash
   * O Button: Side-Slash
