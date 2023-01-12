@@ -14,6 +14,7 @@
 .close
 .open "unpacked/game.bin","game.bin",0x005BE900
     ;.include "asm/controls/chiefWisdom.asm"
+    .include "asm/gameText.asm"
     .include "asm/controls/generalControls.asm"
     .include "asm/controls/snsControls.asm"
     .include "asm/controls/dbControls.asm"
@@ -24,5 +25,6 @@
     .include "asm/controls/basic_attack_ck.asm"
 .close
 .open "unpacked/lobby.bin","lobby.bin",0x005BE900
+    .include "asm/lobbyText.asm"
     ;.include "asm/lobby.asm"
 .close
