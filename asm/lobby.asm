@@ -1,0 +1,46 @@
+.definelabel @ButtonTextClimbIvy1,0x0009CDB0+0x5BE900 ; Set all to O
+.definelabel @ButtonTextClimbIvy2,0x0009CE8E+0x5BE900
+.definelabel @ButtonTextClimbIvy3,0x000B6910+0x5BE900
+.definelabel @ButtonCannonS1,0x000968DF+0x5BE900
+.definelabel @ButtonCannonS2,0x000969EF+0x5BE900
+.definelabel @ButtonBallistaS1,0x0009B3A8+0x5BE900
+.definelabel @ButtonGreatCannon1,0x000AD6A7+0x5BE900
+.definelabel @ButtonGreatCannon2,0x000AD737+0x5BE900
+.definelabel @ButtonGreatCannon3,0x000AD6A7+0x5BE900
+.definelabel @ButtonGreatCannon4,0x000AD737+0x5BE900
+.definelabel @ButtonDragonator,0x000A6519+0x5BE900
+.definelabel @ButtonGathering,0x000B6A8D+0x5BE900
+.definelabel @ButtonCarving1,0x000B7794+0x5BE900
+.definelabel @ButtonCarving2,0x000C4F2D+0x5BE900
+.definelabel @ButtonCarving3,0x000C4FBA+0x5BE900 ; Lao
+
+.org @ButtonTextClimbIvy1
+    .strn IconBtnCircle
+.org @ButtonTextClimbIvy2
+    .strn IconBtnCircle
+.org @ButtonTextClimbIvy3
+    .strn IconBtnCircle
+.org @ButtonCannonS1
+    .strn IconBtnCircle
+.org @ButtonCannonS2
+    .strn IconBtnCircle
+.org @ButtonBallistaS1
+    .strn IconBtnCircle
+.org @ButtonGreatCannon1
+    .strn IconBtnCircle
+.org @ButtonGreatCannon2
+    .strn IconBtnCircle
+.org @ButtonGreatCannon3
+    .strn IconBtnCircle
+.org @ButtonGreatCannon4
+    .strn IconBtnCircle
+.org @ButtonDragonator
+    .strn IconBtnCircle
+.org @ButtonGathering
+    .strn IconBtnCircle
+.org @ButtonCarving1
+    .strn IconBtnCircle
+.org @ButtonCarving2
+    .strn IconBtnCircle
+.org @ButtonCarving3
+    .strn IconBtnCircle

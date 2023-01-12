@@ -1,0 +1,2 @@
+.definelabel OptionsMenuTextFontSize,0x00117A08
+.definelabel OptionsMenuLabelsX,0x00117A9C

@@ -1,0 +1,1721 @@
+﻿; 14 files included
+; 1946 lines
+; 665 labels
+; 40 equations
+
+; D:\pcsx2\MH\1USA Modding\Clean/main.asm
+; asm/addresses.asm
+; asm/defines.asm
+; asm/equip/bladeList.asm
+; asm/makespace.asm
+; asm/controls/camera.asm
+; asm/controls/CustomFuncs.asm
+; asm/controls/generalControls.asm
+; asm/controls/snsControls.asm
+; asm/controls/dbControls.asm
+; asm/controls/gsControls.asm
+; asm/controls/lanControls.asm
+; asm/controls/hamControls.asm
+; asm/controls/basic_attack_ck.asm
+
+FFFFFFFF .ps2                                                         ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 1
+0000289C btnatksnsguardroll:                                          ; asm/addresses.asm line 1
+000028C8 btnatksnsguardslashinput:                                    ; asm/addresses.asm line 2
+000028CC btnatksnsguardslash:                                         ; asm/addresses.asm line 3
+0010F9D0 meltw:                                                       ; asm/addresses.asm line 6
+00580840 pl_act_set:                                                  ; asm/addresses.asm line 7
+00238FE0 sword_zokusei:                                               ; asm/addresses.asm line 8
+00116E80 frame_check2:                                                ; asm/addresses.asm line 9
+005C0AA0 basic_attack_ck:                                             ; asm/addresses.asm line 10
+00581840 pl_master_ck:                                                ; asm/addresses.asm line 11
+001307A0 online_ck:                                                   ; asm/addresses.asm line 12
+001307F0 game_clear_ck:                                               ; asm/addresses.asm line 13
+005C0960 db_act_set:                                                  ; asm/addresses.asm line 14
+0012EA90 setfiltermode:                                               ; asm/addresses.asm line 23
+0010F900 reloadtex:                                                   ; asm/addresses.asm line 24
+0012EAE0 settexturestage:                                             ; asm/addresses.asm line 25
+0059BC80 nothingequipped:                                             ; asm/equip/bladeList.asm line 1
+0059BC98 ironsword:                                                   ; asm/equip/bladeList.asm line 2
+0059BCB0 ironswordplus:                                               ; asm/equip/bladeList.asm line 3
+0059BCC8 bustersword:                                                 ; asm/equip/bladeList.asm line 4
+0059BCE0 busterswordplus:                                             ; asm/equip/bladeList.asm line 5
+0059BCF8 busterblade:                                                 ; asm/equip/bladeList.asm line 6
+0059BD10 ravagerblade:                                                ; asm/equip/bladeList.asm line 7
+0059BD28 ravagerbladeplus:                                            ; asm/equip/bladeList.asm line 8
+0059BD40 laceratorblade:                                              ; asm/equip/bladeList.asm line 9
+0059BD58 laceratorbladeplus:                                          ; asm/equip/bladeList.asm line 10
+0059BD70 ironkatana:                                                  ; asm/equip/bladeList.asm line 11
+0059BD88 ironkatanagrace:                                             ; asm/equip/bladeList.asm line 12
+0059BDA0 ironkatanagospel:                                            ; asm/equip/bladeList.asm line 13
+0059BDB8 bonekatanawolf:                                              ; asm/equip/bladeList.asm line 14
+0059BDD0 bonekatanashark:                                             ; asm/equip/bladeList.asm line 15
+0059BDE8 bonekatanadragon:                                            ; asm/equip/bladeList.asm line 16
+0059BE00 blackkatanamki:                                              ; asm/equip/bladeList.asm line 17
+0059BE18 blackkatanamkii:                                             ; asm/equip/bladeList.asm line 18
+0059BE30 defender:                                                    ; asm/equip/bladeList.asm line 19
+0059BE48 defenderplus:                                                ; asm/equip/bladeList.asm line 20
+0059BE60 sentinel:                                                    ; asm/equip/bladeList.asm line 21
+0059BE78 halberd:                                                     ; asm/equip/bladeList.asm line 22
+0059BE90 halberdplus:                                                 ; asm/equip/bladeList.asm line 23
+0059BEA8 judgment:                                                    ; asm/equip/bladeList.asm line 24
+0059BEC0 executioner:                                                 ; asm/equip/bladeList.asm line 25
+0059BED8 executionerplus:                                             ; asm/equip/bladeList.asm line 26
+0059BEF0 darkscythe:                                                  ; asm/equip/bladeList.asm line 27
+0059BF08 tormentor:                                                   ; asm/equip/bladeList.asm line 28
+0059BF20 boneblade:                                                   ; asm/equip/bladeList.asm line 29
+0059BF38 bonebladeplus:                                               ; asm/equip/bladeList.asm line 30
+0059BF50 agito:                                                       ; asm/equip/bladeList.asm line 31
+0059BF68 agitoplus:                                                   ; asm/equip/bladeList.asm line 32
+0059BF80 dragonagito:                                                 ; asm/equip/bladeList.asm line 33
+0059BF98 golemblade:                                                  ; asm/equip/bladeList.asm line 34
+0059BFB0 golembladeplus:                                              ; asm/equip/bladeList.asm line 35
+0059BFC8 valkyrieblade:                                               ; asm/equip/bladeList.asm line 36
+0059BFE0 sieglinde:                                                   ; asm/equip/bladeList.asm line 37
+0059BFF8 dragonslayer:                                                ; asm/equip/bladeList.asm line 38
+0059C010 dragonmassacre:                                              ; asm/equip/bladeList.asm line 39
+0059C028 finblade:                                                    ; asm/equip/bladeList.asm line 40
+0059C040 finbladeplus:                                                ; asm/equip/bladeList.asm line 41
+0059C058 plesiothwatersword:                                          ; asm/equip/bladeList.asm line 42
+0059C070 redwing:                                                     ; asm/equip/bladeList.asm line 43
+0059C088 rathalosfiresword:                                           ; asm/equip/bladeList.asm line 44
+0059C0A0 rustedgreatsword:                                            ; asm/equip/bladeList.asm line 45
+0059C0B8 tarnishedgreatswd:                                           ; asm/equip/bladeList.asm line 46
+0059C0D0 legendarygreatswd:                                           ; asm/equip/bladeList.asm line 47
+0059C0E8 ancientblade:                                                ; asm/equip/bladeList.asm line 48
+0059C100 bone:                                                        ; asm/equip/bladeList.asm line 49
+0059C118 largebone:                                                   ; asm/equip/bladeList.asm line 50
+0059C130 firedragonsword:                                             ; asm/equip/bladeList.asm line 51
+0059C148 reddragonsword:                                              ; asm/equip/bladeList.asm line 52
+0059C160 serpentblade:                                                ; asm/equip/bladeList.asm line 53
+0059C178 vileserpentblade:                                            ; asm/equip/bladeList.asm line 54
+0059C190 greatserpentblade:                                           ; asm/equip/bladeList.asm line 55
+0059C1A8 ironhammer:                                                  ; asm/equip/bladeList.asm line 56
+0059C1C0 ironhammerplus:                                              ; asm/equip/bladeList.asm line 57
+0059C1D8 warhammer:                                                   ; asm/equip/bladeList.asm line 58
+0059C1F0 warhammerplus:                                               ; asm/equip/bladeList.asm line 59
+0059C208 warmace:                                                     ; asm/equip/bladeList.asm line 60
+0059C220 ironstriker:                                                 ; asm/equip/bladeList.asm line 61
+0059C238 ironstrikerplus:                                             ; asm/equip/bladeList.asm line 62
+0059C250 ironimpact:                                                  ; asm/equip/bladeList.asm line 63
+0059C268 ironimpactplus:                                              ; asm/equip/bladeList.asm line 64
+0059C280 spikedhammer:                                                ; asm/equip/bladeList.asm line 65
+0059C298 spikedhammerplus:                                            ; asm/equip/bladeList.asm line 66
+0059C2B0 crystalhammer:                                               ; asm/equip/bladeList.asm line 67
+0059C2C8 crystalnova:                                                 ; asm/equip/bladeList.asm line 68
+0059C2E0 anvilhammer:                                                 ; asm/equip/bladeList.asm line 69
+0059C2F8 earthshaker:                                                 ; asm/equip/bladeList.asm line 70
+0059C310 boneaxe:                                                     ; asm/equip/bladeList.asm line 71
+0059C328 boneaxeplus:                                                 ; asm/equip/bladeList.asm line 72
+0059C340 bonebroadaxe:                                                ; asm/equip/bladeList.asm line 73
+0059C358 gigatonhammer:                                               ; asm/equip/bladeList.asm line 74
+0059C370 gigatonhammerplus:                                           ; asm/equip/bladeList.asm line 75
+0059C388 titanhammer:                                                 ; asm/equip/bladeList.asm line 76
+0059C3A0 shellhammer:                                                 ; asm/equip/bladeList.asm line 77
+0059C3B8 gravitonhammer:                                              ; asm/equip/bladeList.asm line 78
+0059C3D0 bonehammer:                                                  ; asm/equip/bladeList.asm line 79
+0059C3E8 bonehammerplus:                                              ; asm/equip/bladeList.asm line 80
+0059C400 cyclohammer:                                                 ; asm/equip/bladeList.asm line 81
+0059C418 cyclohammerplus:                                             ; asm/equip/bladeList.asm line 82
+0059C430 atlashammer:                                                 ; asm/equip/bladeList.asm line 83
+0059C448 skullcrusher:                                                ; asm/equip/bladeList.asm line 84
+0059C460 skullcrusherplus:                                            ; asm/equip/bladeList.asm line 85
+0059C478 kutkuchin:                                                   ; asm/equip/bladeList.asm line 86
+0059C490 kutkujaw:                                                    ; asm/equip/bladeList.asm line 87
+0059C4A8 diablohammer:                                                ; asm/equip/bladeList.asm line 88
+0059C4C0 diablohammerplus:                                            ; asm/equip/bladeList.asm line 89
+0059C4D8 diablosmaul:                                                 ; asm/equip/bladeList.asm line 90
+0059C4F0 jailhammer:                                                  ; asm/equip/bladeList.asm line 91
+0059C508 jailhammerplus:                                              ; asm/equip/bladeList.asm line 92
+0059C520 prisonhammer:                                                ; asm/equip/bladeList.asm line 93
+0059C538 gunhammerprototype:                                          ; asm/equip/bladeList.asm line 94
+0059C550 deadrevolver:                                                ; asm/equip/bladeList.asm line 95
+0059C568 rustedhammer:                                                ; asm/equip/bladeList.asm line 96
+0059C580 tarnishedhammer:                                             ; asm/equip/bladeList.asm line 97
+0059C598 legendaryhammer:                                             ; asm/equip/bladeList.asm line 98
+0059C5B0 breathcorehammer:                                            ; asm/equip/bladeList.asm line 99
+0059C5C8 boneclub:                                                    ; asm/equip/bladeList.asm line 100
+0059C5E0 greatboneclub:                                               ; asm/equip/bladeList.asm line 101
+0059C5F8 dragondestroyer:                                             ; asm/equip/bladeList.asm line 102
+0059C610 dragonbreaker:                                               ; asm/equip/bladeList.asm line 103
+0059C628 ironlance:                                                   ; asm/equip/bladeList.asm line 104
+0059C640 ironlanceplus:                                               ; asm/equip/bladeList.asm line 105
+0059C658 knightlance:                                                 ; asm/equip/bladeList.asm line 106
+0059C670 knightlanceplus:                                             ; asm/equip/bladeList.asm line 107
+0059C688 knightspear:                                                 ; asm/equip/bladeList.asm line 108
+0059C6A0 paladinlance:                                                ; asm/equip/bladeList.asm line 109
+0059C6B8 paladinlanceplus:                                            ; asm/equip/bladeList.asm line 110
+0059C6D0 rampart:                                                     ; asm/equip/bladeList.asm line 111
+0059C6E8 babelspear:                                                  ; asm/equip/bladeList.asm line 112
+0059C700 ironknightspike:                                             ; asm/equip/bladeList.asm line 113
+0059C718 steelknightspike:                                            ; asm/equip/bladeList.asm line 114
+0059C730 dragonknightspike:                                           ; asm/equip/bladeList.asm line 115
+0059C748 darklance:                                                   ; asm/equip/bladeList.asm line 116
+0059C760 darklanceplus:                                               ; asm/equip/bladeList.asm line 117
+0059C778 darkspear:                                                   ; asm/equip/bladeList.asm line 118
+0059C790 shocklance:                                                  ; asm/equip/bladeList.asm line 119
+0059C7A8 trident:                                                     ; asm/equip/bladeList.asm line 120
+0059C7C0 bonejavelin:                                                 ; asm/equip/bladeList.asm line 121
+0059C7D8 bonejavelinplus:                                             ; asm/equip/bladeList.asm line 122
+0059C7F0 spikedspear:                                                 ; asm/equip/bladeList.asm line 123
+0059C808 aquaspear:                                                   ; asm/equip/bladeList.asm line 124
+0059C820 aquaspearplus:                                               ; asm/equip/bladeList.asm line 125
+0059C838 lullabyspear:                                                ; asm/equip/bladeList.asm line 126
+0059C850 requiemspear:                                                ; asm/equip/bladeList.asm line 127
+0059C868 bonelance:                                                   ; asm/equip/bladeList.asm line 128
+0059C880 bonelanceplus:                                               ; asm/equip/bladeList.asm line 129
+0059C898 longhorn:                                                    ; asm/equip/bladeList.asm line 130
+0059C8B0 longhornplus:                                                ; asm/equip/bladeList.asm line 131
+0059C8C8 longtusk:                                                    ; asm/equip/bladeList.asm line 132
+0059C8E0 barbariantusk:                                               ; asm/equip/bladeList.asm line 133
+0059C8F8 barbariantuskplus:                                           ; asm/equip/bladeList.asm line 134
+0059C910 barbaroitusk:                                                ; asm/equip/bladeList.asm line 135
+0059C928 ogretusk:                                                    ; asm/equip/bladeList.asm line 136
+0059C940 redtail:                                                     ; asm/equip/bladeList.asm line 137
+0059C958 redtailplus:                                                 ; asm/equip/bladeList.asm line 138
+0059C970 hellfire:                                                    ; asm/equip/bladeList.asm line 139
+0059C988 diablohorn:                                                  ; asm/equip/bladeList.asm line 140
+0059C9A0 diabloslanceplus:                                            ; asm/equip/bladeList.asm line 141
+0059C9B8 diablospear:                                                 ; asm/equip/bladeList.asm line 142
+0059C9D0 crimsonlance:                                                ; asm/equip/bladeList.asm line 143
+0059C9E8 crimsonwarpike:                                              ; asm/equip/bladeList.asm line 144
+0059CA00 venomlance:                                                  ; asm/equip/bladeList.asm line 145
+0059CA18 venomlanceplus:                                              ; asm/equip/bladeList.asm line 146
+0059CA30 basariosvenomspear:                                          ; asm/equip/bladeList.asm line 147
+0059CA48 graviosspear:                                                ; asm/equip/bladeList.asm line 148
+0059CA60 gunlanceprototype:                                           ; asm/equip/bladeList.asm line 149
+0059CA78 gatlinglance:                                                ; asm/equip/bladeList.asm line 150
+0059CA90 rustedlance:                                                 ; asm/equip/bladeList.asm line 151
+0059CAA8 tarnishedlance:                                              ; asm/equip/bladeList.asm line 152
+0059CAC0 legendarylance:                                              ; asm/equip/bladeList.asm line 153
+0059CAD8 undertaker:                                                  ; asm/equip/bladeList.asm line 154
+0059CAF0 dragonlance:                                                 ; asm/equip/bladeList.asm line 155
+0059CB08 dragoonlord:                                                 ; asm/equip/bladeList.asm line 156
+0059CB20 huntersknife:                                                ; asm/equip/bladeList.asm line 157
+0059CB38 huntersknifeplus:                                            ; asm/equip/bladeList.asm line 158
+0059CB50 huntersdagger:                                               ; asm/equip/bladeList.asm line 159
+0059CB68 huntersdaggerplus:                                           ; asm/equip/bladeList.asm line 160
+0059CB80 assassinsdagger:                                             ; asm/equip/bladeList.asm line 161
+0059CB98 kirinbolt:                                                   ; asm/equip/bladeList.asm line 162
+0059CBB0 kirinboltplus:                                               ; asm/equip/bladeList.asm line 163
+0059CBC8 kirinboltmega:                                               ; asm/equip/bladeList.asm line 164
+0059CBE0 kirinboltultimus:                                            ; asm/equip/bladeList.asm line 165
+0059CBF8 serpentbite:                                                 ; asm/equip/bladeList.asm line 166
+0059CC10 serpentbiteplus:                                             ; asm/equip/bladeList.asm line 167
+0059CC28 viperbite:                                                   ; asm/equip/bladeList.asm line 168
+0059CC40 viperbiteplus:                                               ; asm/equip/bladeList.asm line 169
+0059CC58 deathprize:                                                  ; asm/equip/bladeList.asm line 170
+0059CC70 hydrabite:                                                   ; asm/equip/bladeList.asm line 171
+0059CC88 hydrabiteplus:                                               ; asm/equip/bladeList.asm line 172
+0059CCA0 deadlypoison:                                                ; asm/equip/bladeList.asm line 173
+0059CCB8 thunderbane:                                                 ; asm/equip/bladeList.asm line 174
+0059CCD0 thunderbaneplus:                                             ; asm/equip/bladeList.asm line 175
+0059CCE8 frightbane:                                                  ; asm/equip/bladeList.asm line 176
+0059CD00 poisonaxe:                                                   ; asm/equip/bladeList.asm line 177
+0059CD18 poisonbattleaxe:                                             ; asm/equip/bladeList.asm line 178
+0059CD30 bonekris:                                                    ; asm/equip/bladeList.asm line 179
+0059CD48 bonekrisplus:                                                ; asm/equip/bladeList.asm line 180
+0059CD60 bonepick:                                                    ; asm/equip/bladeList.asm line 181
+0059CD78 bonepickplus:                                                ; asm/equip/bladeList.asm line 182
+0059CD90 bonespike:                                                   ; asm/equip/bladeList.asm line 183
+0059CDA8 redsaber:                                                    ; asm/equip/bladeList.asm line 184
+0059CDC0 redsaberplus:                                                ; asm/equip/bladeList.asm line 185
+0059CDD8 flamefalchion:                                               ; asm/equip/bladeList.asm line 186
+0059CDF0 blazingfalchion:                                             ; asm/equip/bladeList.asm line 187
+0059CE08 wearyfinsword:                                               ; asm/equip/bladeList.asm line 188
+0059CE20 wearyfinswordplus:                                           ; asm/equip/bladeList.asm line 189
+0059CE38 sandmanfinsword:                                             ; asm/equip/bladeList.asm line 190
+0059CE50 herosblade:                                                  ; asm/equip/bladeList.asm line 191
+0059CE68 mastersblade:                                                ; asm/equip/bladeList.asm line 192
+0059CE80 studdedclub:                                                 ; asm/equip/bladeList.asm line 193
+0059CE98 studdedclubplus:                                             ; asm/equip/bladeList.asm line 194
+0059CEB0 spikedbat:                                                   ; asm/equip/bladeList.asm line 195
+0059CEC8 crimsonclub:                                                 ; asm/equip/bladeList.asm line 196
+0059CEE0 monoblosclub:                                                ; asm/equip/bladeList.asm line 197
+0059CEF8 rustedsword:                                                 ; asm/equip/bladeList.asm line 198
+0059CF10 tarnishedsword:                                              ; asm/equip/bladeList.asm line 199
+0059CF28 legendarysword:                                              ; asm/equip/bladeList.asm line 200
+0059CF40 eternalstrife:                                               ; asm/equip/bladeList.asm line 201
+0059CF58 kitchenknife:                                                ; asm/equip/bladeList.asm line 202
+0059CF70 ironchefblade:                                               ; asm/equip/bladeList.asm line 203
+0059CF88 dragonbuster:                                                ; asm/equip/bladeList.asm line 204
+0059CFA0 dragonblood:                                                 ; asm/equip/bladeList.asm line 205
+0059CFB8 catspaw:                                                     ; asm/equip/bladeList.asm line 206
+0059CFD0 catburglar:                                                  ; asm/equip/bladeList.asm line 207
+0059CFE8 tacticalblade:                                               ; asm/equip/bladeList.asm line 208
+0059D000 eagercleaver:                                                ; asm/equip/bladeList.asm line 209
+0059D018 divineslasher:                                               ; asm/equip/bladeList.asm line 210
+0059D030 chromerazor:                                                 ; asm/equip/bladeList.asm line 211
+0059D048 eternalannihilator:                                          ; asm/equip/bladeList.asm line 212
+0059D060 finishinghammer:                                             ; asm/equip/bladeList.asm line 213
+0059D078 onslaughthammer:                                             ; asm/equip/bladeList.asm line 214
+0059D090 bindermace:                                                  ; asm/equip/bladeList.asm line 215
+0059D0A8 irondevil:                                                   ; asm/equip/bladeList.asm line 216
+0059D0C0 grayburgjavelin:                                             ; asm/equip/bladeList.asm line 217
+0059D0D8 nightmare:                                                   ; asm/equip/bladeList.asm line 218
+0059D0F0 spearofprominence:                                           ; asm/equip/bladeList.asm line 219
+0059D108 blackdragonspear:                                            ; asm/equip/bladeList.asm line 220
+0059D120 thundertip:                                                  ; asm/equip/bladeList.asm line 221
+0059D138 corona:                                                      ; asm/equip/bladeList.asm line 222
+0059D150 blackdragonsword:                                            ; asm/equip/bladeList.asm line 223
+0059D168 odyssey:                                                     ; asm/equip/bladeList.asm line 224
+0059D180 teddybear:                                                   ; asm/equip/bladeList.asm line 225
+0059D198 valhalla:                                                    ; asm/equip/bladeList.asm line 226
+0059D1B0 ninjasword:                                                  ; asm/equip/bladeList.asm line 227
+0059D1C8 enormousham:                                                 ; asm/equip/bladeList.asm line 228
+0059D1E0 siegmund:                                                    ; asm/equip/bladeList.asm line 229
+0059D1F8 frozentuna:                                                  ; asm/equip/bladeList.asm line 230
+0059D210 cactuscreamer:                                               ; asm/equip/bladeList.asm line 231
+0059D228 vacuumstriker:                                               ; asm/equip/bladeList.asm line 232
+0059D240 nativespear:                                                 ; asm/equip/bladeList.asm line 233
+0059D258 polytan:                                                     ; asm/equip/bladeList.asm line 234
+0059D270 twindagger:                                                  ; asm/equip/bladeList.asm line 235
+0059D288 twindaggerplus:                                              ; asm/equip/bladeList.asm line 236
+0059D2A0 hurricane:                                                   ; asm/equip/bladeList.asm line 237
+0059D2B8 hurricaneplus:                                               ; asm/equip/bladeList.asm line 238
+0059D2D0 cyclone:                                                     ; asm/equip/bladeList.asm line 239
+0059D2E8 dualtomahawk:                                                ; asm/equip/bladeList.asm line 240
+0059D300 dualtomahawkplus:                                            ; asm/equip/bladeList.asm line 241
+0059D318 guildrapier:                                                 ; asm/equip/bladeList.asm line 242
+0059D330 guildrapierplus:                                             ; asm/equip/bladeList.asm line 243
+0059D348 guildsaber:                                                  ; asm/equip/bladeList.asm line 244
+0059D360 prototypesawslicer:                                          ; asm/equip/bladeList.asm line 245
+0059D378 guillotine:                                                  ; asm/equip/bladeList.asm line 246
+0059D390 bonescythe:                                                  ; asm/equip/bladeList.asm line 247
+0059D3A8 bonescytheplus:                                              ; asm/equip/bladeList.asm line 248
+0059D3C0 cutlass:                                                     ; asm/equip/bladeList.asm line 249
+0059D3D8 cutlassplus:                                                 ; asm/equip/bladeList.asm line 250
+0059D3F0 dualdiablo:                                                  ; asm/equip/bladeList.asm line 251
+0059D408 dualdiabloplus:                                              ; asm/equip/bladeList.asm line 252
+0059D420 insector:                                                    ; asm/equip/bladeList.asm line 253
+0059D438 insectorplus:                                                ; asm/equip/bladeList.asm line 254
+0059D450 gradios:                                                     ; asm/equip/bladeList.asm line 255
+0059D468 gradiosplus:                                                 ; asm/equip/bladeList.asm line 256
+0059D480 gradiosultimus:                                              ; asm/equip/bladeList.asm line 257
+0059D498 doubledragon:                                                ; asm/equip/bladeList.asm line 258
+0059D4B0 dualdragonultimus:                                           ; asm/equip/bladeList.asm line 259
+0059D4C8 thegmrchromeheart:                                           ; asm/equip/bladeList.asm line 260
+FFFFFFFF .open "ogSLUS_208.96","SLUS_208.96",0x00100000               ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 5
+00314BD0 @weapon_model_ids:                                           ; asm/makespace.asm line 1
+00100000 .org 0x00314BD0                                              ; asm/makespace.asm line 3
+00314BD0 .halfword 0x06D6                                             ; asm/makespace.asm line 4
+00314BD2 .halfword 0x06D7                                             ; asm/makespace.asm line 5
+00314BD4 .halfword 0x06D8                                             ; asm/makespace.asm line 6
+00314BD6 .halfword 0x06D9                                             ; asm/makespace.asm line 7
+00314BD8 .halfword 0x06DA                                             ; asm/makespace.asm line 8
+00314BDA .halfword 0x06DB                                             ; asm/makespace.asm line 9
+00314BDC .halfword 0x06DC                                             ; asm/makespace.asm line 10
+00314BDE .halfword 0x06DD                                             ; asm/makespace.asm line 11
+00314BE0 .halfword 0x06DE                                             ; asm/makespace.asm line 12
+00314BE2 .halfword 0x06DF                                             ; asm/makespace.asm line 13
+00314BE4 .halfword 0x06E0                                             ; asm/makespace.asm line 14
+00314BE6 .halfword 0x06E1                                             ; asm/makespace.asm line 15
+00314BE8 .halfword 0x06E2                                             ; asm/makespace.asm line 16
+00314BEA .halfword 0x06E3                                             ; asm/makespace.asm line 17
+00314BEC .halfword 0x06E4                                             ; asm/makespace.asm line 18
+00314BEE .halfword 0x06E5                                             ; asm/makespace.asm line 19
+00314BF0 .halfword 0x06E6                                             ; asm/makespace.asm line 20
+00314BF2 .halfword 0x06E7                                             ; asm/makespace.asm line 21
+00314BF4 .halfword 0x06E8                                             ; asm/makespace.asm line 22
+00314BF6 .halfword 0x06E9                                             ; asm/makespace.asm line 23
+00314BF8 .halfword 0x06EA                                             ; asm/makespace.asm line 24
+00314BFA .halfword 0x06EB                                             ; asm/makespace.asm line 25
+00314BFC .halfword 0x06EC                                             ; asm/makespace.asm line 26
+00314BFE .halfword 0x06ED                                             ; asm/makespace.asm line 27
+00314C00 .halfword 0x06EE                                             ; asm/makespace.asm line 28
+00314C02 .halfword 0x06EF                                             ; asm/makespace.asm line 29
+00314C04 .halfword 0x06F0                                             ; asm/makespace.asm line 30
+00314C06 .halfword 0x06F1                                             ; asm/makespace.asm line 31
+00314C08 .halfword 0x06F2                                             ; asm/makespace.asm line 32
+00314C0A .halfword 0x06F3                                             ; asm/makespace.asm line 33
+00314C0C .halfword 0x06F4                                             ; asm/makespace.asm line 34
+00314C0E .halfword 0x06F5                                             ; asm/makespace.asm line 35
+00314C10 .halfword 0x06F6                                             ; asm/makespace.asm line 36
+00314C12 .halfword 0x06F7                                             ; asm/makespace.asm line 37
+00314C14 .halfword 0x06F8                                             ; asm/makespace.asm line 38
+00314C16 .halfword 0x06F9                                             ; asm/makespace.asm line 39
+00314C18 .halfword 0x06FA                                             ; asm/makespace.asm line 40
+00314C1A .halfword 0x06FB                                             ; asm/makespace.asm line 41
+00314C1C .halfword 0x06FC                                             ; asm/makespace.asm line 42
+00314C1E .halfword 0x06FD                                             ; asm/makespace.asm line 43
+00314C20 .halfword 0x06FE                                             ; asm/makespace.asm line 44
+00314C22 .halfword 0x06FF                                             ; asm/makespace.asm line 45
+00314C24 .halfword 0x0700                                             ; asm/makespace.asm line 46
+00314C26 .halfword 0x0701                                             ; asm/makespace.asm line 47
+00314C28 .halfword 0x0702                                             ; asm/makespace.asm line 48
+00314C2A .halfword 0x0703                                             ; asm/makespace.asm line 49
+00314C2C .halfword 0x0704                                             ; asm/makespace.asm line 50
+00314C2E .halfword 0x0705                                             ; asm/makespace.asm line 51
+00314C30 .halfword 0x0706                                             ; asm/makespace.asm line 52
+00314C32 .halfword 0x0707                                             ; asm/makespace.asm line 53
+00314C34 .halfword 0x0708                                             ; asm/makespace.asm line 54
+00314C36 .halfword 0x0709                                             ; asm/makespace.asm line 55
+00314C38 .halfword 0x070A                                             ; asm/makespace.asm line 56
+00314C3A .halfword 0x070B                                             ; asm/makespace.asm line 57
+00314C3C .halfword 0x070C                                             ; asm/makespace.asm line 58
+00314C3E .halfword 0x070D                                             ; asm/makespace.asm line 59
+00314C40 .halfword 0x070E                                             ; asm/makespace.asm line 60
+00314C42 .halfword 0x070F                                             ; asm/makespace.asm line 61
+00314C44 .halfword 0x0710                                             ; asm/makespace.asm line 62
+00314C46 .halfword 0x0711                                             ; asm/makespace.asm line 63
+00314C48 .halfword 0x0712                                             ; asm/makespace.asm line 64
+00314C4A .halfword 0x0713                                             ; asm/makespace.asm line 65
+00314C4C .halfword 0x0714                                             ; asm/makespace.asm line 66
+00314C4E .halfword 0x0715                                             ; asm/makespace.asm line 67
+00314C50 .halfword 0x0716                                             ; asm/makespace.asm line 68
+00314C52 .halfword 0x0717                                             ; asm/makespace.asm line 69
+00314C54 .halfword 0x0718                                             ; asm/makespace.asm line 70
+00314C56 .halfword 0x0719                                             ; asm/makespace.asm line 71
+00314C58 .halfword 0x071A                                             ; asm/makespace.asm line 72
+00314C5A .halfword 0x071B                                             ; asm/makespace.asm line 73
+00314C5C .halfword 0x071C                                             ; asm/makespace.asm line 74
+00314C5E .halfword 0x071D                                             ; asm/makespace.asm line 75
+00314C60 .halfword 0x071E                                             ; asm/makespace.asm line 76
+00314C62 .halfword 0x071F                                             ; asm/makespace.asm line 77
+00314C64 .halfword 0x0720                                             ; asm/makespace.asm line 78
+00314C66 .halfword 0x0721                                             ; asm/makespace.asm line 79
+00314C68 .halfword 0x0722                                             ; asm/makespace.asm line 80
+00314C6A .halfword 0x0723                                             ; asm/makespace.asm line 81
+00314C6C .halfword 0x0724                                             ; asm/makespace.asm line 82
+00314C6E .halfword 0x0725                                             ; asm/makespace.asm line 83
+00314C70 .halfword 0x0726                                             ; asm/makespace.asm line 84
+00314C72 .halfword 0x0727                                             ; asm/makespace.asm line 85
+00314C74 .halfword 0x0728                                             ; asm/makespace.asm line 86
+00314C76 .halfword 0x0729                                             ; asm/makespace.asm line 87
+00314C78 .halfword 0x072A                                             ; asm/makespace.asm line 88
+00314C7A .halfword 0x072B                                             ; asm/makespace.asm line 89
+00314C7C .halfword 0x072C                                             ; asm/makespace.asm line 90
+00314C7E .halfword 0x072D                                             ; asm/makespace.asm line 91
+00314C80 .halfword 0x072E                                             ; asm/makespace.asm line 92
+00314C82 .halfword 0x072F                                             ; asm/makespace.asm line 93
+00314C84 .halfword 0x0730                                             ; asm/makespace.asm line 94
+00314C86 .halfword 0x0731                                             ; asm/makespace.asm line 95
+00314C88 .halfword 0x0732                                             ; asm/makespace.asm line 96
+00314C8A .halfword 0x0733                                             ; asm/makespace.asm line 97
+00314C8C .halfword 0x0734                                             ; asm/makespace.asm line 98
+00314C8E .halfword 0x0735                                             ; asm/makespace.asm line 99
+00314C90 .halfword 0x0736                                             ; asm/makespace.asm line 100
+00314C92 .halfword 0x0737                                             ; asm/makespace.asm line 101
+00314C94 .halfword 0x0738                                             ; asm/makespace.asm line 102
+00314C96 .halfword 0x0739                                             ; asm/makespace.asm line 103
+00314C98 .halfword 0x073A                                             ; asm/makespace.asm line 104
+00314C9A .halfword 0x073B                                             ; asm/makespace.asm line 105
+00314C9C .halfword 0x073C                                             ; asm/makespace.asm line 106
+00314C9E .halfword 0x073D                                             ; asm/makespace.asm line 107
+00314CA0 .halfword 0x073E                                             ; asm/makespace.asm line 108
+00314CA2 .halfword 0x073F                                             ; asm/makespace.asm line 109
+00314CA4 .halfword 0x0740                                             ; asm/makespace.asm line 110
+00314CA6 .halfword 0x0741                                             ; asm/makespace.asm line 111
+00314CA8 .halfword 0x0742                                             ; asm/makespace.asm line 112
+00314CAA .halfword 0x0743                                             ; asm/makespace.asm line 113
+00314CAC .halfword 0x0744                                             ; asm/makespace.asm line 114
+00314CAE .halfword 0x0745                                             ; asm/makespace.asm line 115
+00314CB0 .halfword 0x0746                                             ; asm/makespace.asm line 116
+00314CB2 .halfword 0x0747                                             ; asm/makespace.asm line 117
+00314CB4 .halfword 0x0748                                             ; asm/makespace.asm line 118
+00314CB6 .halfword 0x0749                                             ; asm/makespace.asm line 119
+00314CB8 .halfword 0x074A                                             ; asm/makespace.asm line 120
+00314CBA .halfword 0x074B                                             ; asm/makespace.asm line 121
+00314CBC .halfword 0x074C                                             ; asm/makespace.asm line 122
+00314CBE .halfword 0x074D                                             ; asm/makespace.asm line 123
+00314CC0 .halfword 0x074E                                             ; asm/makespace.asm line 124
+00314CC2 .halfword 0x074F                                             ; asm/makespace.asm line 125
+00314CC4 .halfword 0x0750                                             ; asm/makespace.asm line 126
+00314CC6 .halfword 0x06E0                                             ; asm/makespace.asm line 127
+00314CC8 .halfword 0x0751                                             ; asm/makespace.asm line 128
+00314CCA .halfword 0x0752                                             ; asm/makespace.asm line 129
+00314CCC .halfword 0x0753                                             ; asm/makespace.asm line 130
+00314CCE .halfword 0x0754                                             ; asm/makespace.asm line 131
+00314CD0 .halfword 0x0755                                             ; asm/makespace.asm line 132
+00314CD2 .halfword 0x0756                                             ; asm/makespace.asm line 133
+00314CD4 .halfword 0x0757                                             ; asm/makespace.asm line 134
+00314CD6 .halfword 0x0758                                             ; asm/makespace.asm line 135
+00314CD8 .halfword 0x0759                                             ; asm/makespace.asm line 136
+00314CDA .halfword 0x075A                                             ; asm/makespace.asm line 137
+00314CDC .halfword 0x075B                                             ; asm/makespace.asm line 138
+00314CDE .halfword 0x075C                                             ; asm/makespace.asm line 139
+00314CE0 .halfword 0x075D                                             ; asm/makespace.asm line 140
+00314CE2 .halfword 0x075E                                             ; asm/makespace.asm line 141
+00314CE4 .halfword 0x075F                                             ; asm/makespace.asm line 142
+00314CE6 .halfword 0x0760                                             ; asm/makespace.asm line 143
+00314CE8 .org 0x0010F7CC                                              ; asm/makespace.asm line 146
+0010F7CC    sll     v1,a0,0x1                                         ; asm/makespace.asm line 147
+0010F7D0 .org 0x0010F7DC                                              ; asm/makespace.asm line 148
+0010F7DC    lh      a1,(v0)                                           ; asm/makespace.asm line 149
+0010F7E0 .org 0x001E9B40                                              ; asm/controls/camera.asm line 1
+001E9B40    jal     0x31E148                                          ; asm/controls/camera.asm line 2
+001E9B44    nop                                                       ; asm/controls/camera.asm line 3
+001E9B48 .org 0x001E9B78                                              ; asm/controls/camera.asm line 4
+001E9B78    jal     0x31E18C                                          ; asm/controls/camera.asm line 5
+001E9B7C    nop                                                       ; asm/controls/camera.asm line 6
+001E9B80    beqz    v0,0x1E9B90                                       ; asm/controls/camera.asm line 7
+001E9B84 .org 0x001E9B90                                              ; asm/controls/camera.asm line 8
+001E9B90    jal     0x31E1C0                                          ; asm/controls/camera.asm line 9
+001E9B94    nop                                                       ; asm/controls/camera.asm line 10
+001E9B98 .org 0x001E9D20                                              ; asm/controls/camera.asm line 11
+001E9D20    jal     0x31E238                                          ; asm/controls/camera.asm line 12
+001E9D24    nop                                                       ; asm/controls/camera.asm line 13
+001E9D28 .org 0x001E9D48                                              ; asm/controls/camera.asm line 14
+001E9D48    jal     0x31E1F4                                          ; asm/controls/camera.asm line 15
+001E9D4C    nop                                                       ; asm/controls/camera.asm line 16
+001E9D50 .org 0x001E9D78                                              ; asm/controls/camera.asm line 17
+001E9D78    jal     0x31E1F4                                          ; asm/controls/camera.asm line 18
+001E9D7C    nop                                                       ; asm/controls/camera.asm line 19
+001E9D80 .org 0x001E9DA0                                              ; asm/controls/camera.asm line 20
+001E9DA0    jal     0x31E238                                          ; asm/controls/camera.asm line 21
+001E9DA4    nop                                                       ; asm/controls/camera.asm line 22
+001E9DA8 .org 0x0031E180                                              ; asm/controls/CustomFuncs.asm line 2
+0031E000 getattackbtn:                                                ; asm/controls/CustomFuncs.asm line 3
+0031E180    lhu     v0,0x368(a0)                                      ; asm/controls/CustomFuncs.asm line 5
+0031E184    andi    at,v0,0x4000                                      ; asm/controls/CustomFuncs.asm line 6
+0031E188    beqz    at,0x31E198                                       ; asm/controls/CustomFuncs.asm line 7
+0031E18C    nop                                                       ; asm/controls/CustomFuncs.asm line 8
+0031E190    b       0x31E1E4                                          ; asm/controls/CustomFuncs.asm line 9
+0031E194    ori     v0,r0,0x4                                         ; asm/controls/CustomFuncs.asm line 10
+0031E198 @@checktro:                                                  ; asm/controls/CustomFuncs.asm line 11
+0031E198    lhu     v0,0x368(a0)                                      ; asm/controls/CustomFuncs.asm line 12
+0031E19C    andi    at,v0,0x100                                       ; asm/controls/CustomFuncs.asm line 13
+0031E1A0    beqz    at,0x31E1C0                                       ; asm/controls/CustomFuncs.asm line 14
+0031E1A4    nop                                                       ; asm/controls/CustomFuncs.asm line 15
+0031E1A8    lhu     v0,0x368(a0)                                      ; asm/controls/CustomFuncs.asm line 16
+0031E1AC    andi    at,v0,0x20                                        ; asm/controls/CustomFuncs.asm line 17
+0031E1B0    beqz    at,0x31E1D8                                       ; asm/controls/CustomFuncs.asm line 18
+0031E1B4    nop                                                       ; asm/controls/CustomFuncs.asm line 19
+0031E1B8    b       0x31E1E4                                          ; asm/controls/CustomFuncs.asm line 20
+0031E1BC    ori     v0,r0,0x3                                         ; asm/controls/CustomFuncs.asm line 21
+0031E1C0 @@checkcircle:                                               ; asm/controls/CustomFuncs.asm line 22
+0031E1C0    lhu     v0,0x368(a0)                                      ; asm/controls/CustomFuncs.asm line 23
+0031E1C4    andi    at,v0,0x20                                        ; asm/controls/CustomFuncs.asm line 24
+0031E1C8    beqz    at,0x31E1E0                                       ; asm/controls/CustomFuncs.asm line 25
+0031E1CC    nop                                                       ; asm/controls/CustomFuncs.asm line 26
+0031E1D0    b       0x31E1E4                                          ; asm/controls/CustomFuncs.asm line 27
+0031E1D4    ori     v0,r0,0x2                                         ; asm/controls/CustomFuncs.asm line 28
+0031E1D8 @@onlytriangle:                                              ; asm/controls/CustomFuncs.asm line 29
+0031E1D8    b       0x31E1E4                                          ; asm/controls/CustomFuncs.asm line 30
+0031E1DC    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 31
+0031E1E0 @@none:                                                      ; asm/controls/CustomFuncs.asm line 32
+0031E1E0    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 33
+0031E1E4 @@end:                                                       ; asm/controls/CustomFuncs.asm line 34
+0031E1E4    jr      ra                                                ; asm/controls/CustomFuncs.asm line 35
+0031E1E8    nop                                                       ; asm/controls/CustomFuncs.asm line 36
+0031E1EC .align 0x00000008                                            ; asm/controls/CustomFuncs.asm line 37
+0031E070 checkrollbtn:                                                ; asm/controls/CustomFuncs.asm line 38
+0031E1F0    lhu     v0,0x368(a3)                                      ; asm/controls/CustomFuncs.asm line 40
+0031E1F4    andi    v0,0x40                                           ; asm/controls/CustomFuncs.asm line 41
+0031E1F8    beqz    v0,0x31E218                                       ; asm/controls/CustomFuncs.asm line 42
+0031E1FC    nop                                                       ; asm/controls/CustomFuncs.asm line 43
+0031E200    lh      v0,0x748(a3)                                      ; asm/controls/CustomFuncs.asm line 44
+0031E204    slti    v0,v0,0x4B                                        ; asm/controls/CustomFuncs.asm line 45
+0031E208    bnez    v0,0x31E218                                       ; asm/controls/CustomFuncs.asm line 46
+0031E20C    nop                                                       ; asm/controls/CustomFuncs.asm line 47
+0031E210    b       0x31E21C                                          ; asm/controls/CustomFuncs.asm line 48
+0031E214    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 49
+0031E218 @@noroll:                                                    ; asm/controls/CustomFuncs.asm line 50
+0031E218    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 51
+0031E21C @@end:                                                       ; asm/controls/CustomFuncs.asm line 52
+0031E21C    jr      ra                                                ; asm/controls/CustomFuncs.asm line 53
+0031E220    nop                                                       ; asm/controls/CustomFuncs.asm line 54
+0031E224 .align 0x00000008                                            ; asm/controls/CustomFuncs.asm line 55
+0031E0A8 sns_guard_ck:                                                ; asm/controls/CustomFuncs.asm line 56
+0031E228    addiu   sp,-0x20                                          ; asm/controls/CustomFuncs.asm line 57
+0031E22C    sd      ra,0x10(sp)                                       ; asm/controls/CustomFuncs.asm line 58
+0031E230    sq      s0,(sp)                                           ; asm/controls/CustomFuncs.asm line 59
+0031E234    dmove   a0,s0                                             ; asm/controls/CustomFuncs.asm line 60
+0031E238    lh      v1,0x748(s0)                                      ; asm/controls/CustomFuncs.asm line 61
+0031E23C    slti    v1,0x4B                                           ; asm/controls/CustomFuncs.asm line 62
+0031E240    bnez    v1,0x31E270                                       ; asm/controls/CustomFuncs.asm line 63
+0031E244    nop                                                       ; asm/controls/CustomFuncs.asm line 64
+0031E248    lhu     v1,0x368(s0)                                      ; asm/controls/CustomFuncs.asm line 65
+0031E24C    andi    at,v1,0x40                                        ; asm/controls/CustomFuncs.asm line 66
+0031E250    beqz    at,0x31E270                                       ; asm/controls/CustomFuncs.asm line 67
+0031E254    ori     a1,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 72
+0031E258    nop                                                       ; asm/controls/CustomFuncs.asm line 75
+0031E25C    ori     a2,r0,0x1C                                        ; asm/controls/CustomFuncs.asm line 76
+0031E260    jal     0x580840                                          ; asm/controls/CustomFuncs.asm line 77
+0031E264    ori     a3,r0,0x4                                         ; asm/controls/CustomFuncs.asm line 78
+0031E268    b       0x31E2B8                                          ; asm/controls/CustomFuncs.asm line 79
+0031E26C    nop                                                       ; asm/controls/CustomFuncs.asm line 80
+0031E270 @@checktriangle:                                             ; asm/controls/CustomFuncs.asm line 93
+0031E270    andi    at,v1,0x100                                       ; asm/controls/CustomFuncs.asm line 94
+0031E274    beqz    at,0x31E294                                       ; asm/controls/CustomFuncs.asm line 95
+0031E278    nop                                                       ; asm/controls/CustomFuncs.asm line 96
+0031E27C    ori     a1,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 97
+0031E280    ori     a2,r0,0x49                                        ; asm/controls/CustomFuncs.asm line 98
+0031E284    jal     0x580840                                          ; asm/controls/CustomFuncs.asm line 99
+0031E288    ori     a3,r0,0x4                                         ; asm/controls/CustomFuncs.asm line 100
+0031E28C    b       0x31E2B8                                          ; asm/controls/CustomFuncs.asm line 101
+0031E290    nop                                                       ; asm/controls/CustomFuncs.asm line 102
+0031E294 @@checkcircle:                                               ; asm/controls/CustomFuncs.asm line 103
+0031E294    andi    at,v1,0x20                                        ; asm/controls/CustomFuncs.asm line 104
+0031E298    beqz    at,0x31E2B8                                       ; asm/controls/CustomFuncs.asm line 105
+0031E29C    nop                                                       ; asm/controls/CustomFuncs.asm line 106
+0031E2A0    ori     a1,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 107
+0031E2A4    ori     a2,r0,0x34                                        ; asm/controls/CustomFuncs.asm line 108
+0031E2A8    jal     0x580840                                          ; asm/controls/CustomFuncs.asm line 109
+0031E2AC    ori     a3,r0,0x4                                         ; asm/controls/CustomFuncs.asm line 110
+0031E2B0    b       0x31E2B8                                          ; asm/controls/CustomFuncs.asm line 111
+0031E2B4    nop                                                       ; asm/controls/CustomFuncs.asm line 112
+0031E2B8 @@return:                                                    ; asm/controls/CustomFuncs.asm line 130
+0031E2B8    ld      ra,0x10(sp)                                       ; asm/controls/CustomFuncs.asm line 131
+0031E2BC    lq      s0,(sp)                                           ; asm/controls/CustomFuncs.asm line 132
+0031E2C0    jr      ra                                                ; asm/controls/CustomFuncs.asm line 133
+0031E2C4    addiu   sp,0x20                                           ; asm/controls/CustomFuncs.asm line 134
+0031E2C8 .align 0x00000008                                            ; asm/controls/CustomFuncs.asm line 135
+0031E148 checkcamside:                                                ; asm/controls/CustomFuncs.asm line 136
+0031E2C8    lbu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 137
+0031E2CC    andi    v0,a0,0x4                                         ; asm/controls/CustomFuncs.asm line 138
+0031E2D0    bnez    v0,0x31E2F8                                       ; asm/controls/CustomFuncs.asm line 139
+0031E2D4    nop                                                       ; asm/controls/CustomFuncs.asm line 140
+0031E2D8    lbu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 141
+0031E2DC    andi    v0,a0,0x8                                         ; asm/controls/CustomFuncs.asm line 142
+0031E2E0    bnez    v0,0x31E2F8                                       ; asm/controls/CustomFuncs.asm line 143
+0031E2E4    nop                                                       ; asm/controls/CustomFuncs.asm line 144
+0031E2E8    lhu     a0,0x6A(s3)                                       ; asm/controls/CustomFuncs.asm line 145
+0031E2EC    andi    v0,a0,0xC00                                       ; asm/controls/CustomFuncs.asm line 146
+0031E2F0    beqz    v0,0x31E300                                       ; asm/controls/CustomFuncs.asm line 147
+0031E2F4    nop                                                       ; asm/controls/CustomFuncs.asm line 148
+0031E2F8 @@do:                                                        ; asm/controls/CustomFuncs.asm line 149
+0031E2F8    b       0x31E304                                          ; asm/controls/CustomFuncs.asm line 150
+0031E2FC    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 151
+0031E300 @@nope:                                                      ; asm/controls/CustomFuncs.asm line 152
+0031E300    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 153
+0031E304 @@return:                                                    ; asm/controls/CustomFuncs.asm line 154
+0031E304    jr      ra                                                ; asm/controls/CustomFuncs.asm line 155
+0031E308    nop                                                       ; asm/controls/CustomFuncs.asm line 156
+0031E18C checkcamleft:                                                ; asm/controls/CustomFuncs.asm line 157
+0031E30C    lhu     a0,0x6A(s3)                                       ; asm/controls/CustomFuncs.asm line 158
+0031E310    andi    v0,a0,0x800                                       ; asm/controls/CustomFuncs.asm line 159
+0031E314    bnez    v0,0x31E328                                       ; asm/controls/CustomFuncs.asm line 160
+0031E318    nop                                                       ; asm/controls/CustomFuncs.asm line 161
+0031E31C    lhu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 162
+0031E320    andi    v0,a0,0x8                                         ; asm/controls/CustomFuncs.asm line 163
+0031E324    beqz    v0,0x31E334                                       ; asm/controls/CustomFuncs.asm line 164
+0031E328 @@do:                                                        ; asm/controls/CustomFuncs.asm line 165
+0031E328    nop                                                       ; asm/controls/CustomFuncs.asm line 166
+0031E32C    b       0x31E338                                          ; asm/controls/CustomFuncs.asm line 167
+0031E330    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 168
+0031E334 @@nope:                                                      ; asm/controls/CustomFuncs.asm line 169
+0031E334    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 170
+0031E338 @@return:                                                    ; asm/controls/CustomFuncs.asm line 171
+0031E338    jr      ra                                                ; asm/controls/CustomFuncs.asm line 172
+0031E33C    nop                                                       ; asm/controls/CustomFuncs.asm line 173
+0031E1C0 checkcamright:                                               ; asm/controls/CustomFuncs.asm line 174
+0031E340    lhu     a0,0x6A(s3)                                       ; asm/controls/CustomFuncs.asm line 175
+0031E344    andi    v0,a0,0x400                                       ; asm/controls/CustomFuncs.asm line 176
+0031E348    bnez    v0,0x31E360                                       ; asm/controls/CustomFuncs.asm line 177
+0031E34C    nop                                                       ; asm/controls/CustomFuncs.asm line 178
+0031E350    lhu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 179
+0031E354    andi    v0,a0,0x4                                         ; asm/controls/CustomFuncs.asm line 180
+0031E358    beqz    v0,0x31E368                                       ; asm/controls/CustomFuncs.asm line 181
+0031E35C    nop                                                       ; asm/controls/CustomFuncs.asm line 182
+0031E360 @@do:                                                        ; asm/controls/CustomFuncs.asm line 183
+0031E360    b       0x31E36C                                          ; asm/controls/CustomFuncs.asm line 184
+0031E364    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 185
+0031E368 @@nope:                                                      ; asm/controls/CustomFuncs.asm line 186
+0031E368    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 187
+0031E36C @@return:                                                    ; asm/controls/CustomFuncs.asm line 188
+0031E36C    jr      ra                                                ; asm/controls/CustomFuncs.asm line 189
+0031E370    nop                                                       ; asm/controls/CustomFuncs.asm line 190
+0031E1F4 checkcamup:                                                  ; asm/controls/CustomFuncs.asm line 191
+0031E374    lhu     a0,0x6C(s3)                                       ; asm/controls/CustomFuncs.asm line 192
+0031E378    andi    v0,a0,0x2000                                      ; asm/controls/CustomFuncs.asm line 193
+0031E37C    bnez    v0,0x31E3A4                                       ; asm/controls/CustomFuncs.asm line 194
+0031E380    nop                                                       ; asm/controls/CustomFuncs.asm line 195
+0031E384    lhu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 196
+0031E388    andi    v0,a0,0xC                                         ; asm/controls/CustomFuncs.asm line 197
+0031E38C    bnez    v0,0x31E3AC                                       ; asm/controls/CustomFuncs.asm line 198
+0031E390    nop                                                       ; asm/controls/CustomFuncs.asm line 199
+0031E394    lhu     a0,0x37C(s2)                                      ; asm/controls/CustomFuncs.asm line 200
+0031E398    andi    v0,a0,0x20                                        ; asm/controls/CustomFuncs.asm line 201
+0031E39C    beqz    v0,0x31E3AC                                       ; asm/controls/CustomFuncs.asm line 202
+0031E3A0    nop                                                       ; asm/controls/CustomFuncs.asm line 203
+0031E3A4 @@do:                                                        ; asm/controls/CustomFuncs.asm line 204
+0031E3A4    b       0x31E3B0                                          ; asm/controls/CustomFuncs.asm line 205
+0031E3A8    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 206
+0031E3AC @@nope:                                                      ; asm/controls/CustomFuncs.asm line 207
+0031E3AC    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 208
+0031E3B0 @@return:                                                    ; asm/controls/CustomFuncs.asm line 209
+0031E3B0    jr      ra                                                ; asm/controls/CustomFuncs.asm line 210
+0031E3B4    nop                                                       ; asm/controls/CustomFuncs.asm line 211
+0031E3B8 .align 0x00000008                                            ; asm/controls/CustomFuncs.asm line 213
+0031E238 checkcamdown:                                                ; asm/controls/CustomFuncs.asm line 214
+0031E3B8    lhu     a0,0x6C(s3)                                       ; asm/controls/CustomFuncs.asm line 215
+0031E3BC    andi    v0,a0,0x1000                                      ; asm/controls/CustomFuncs.asm line 216
+0031E3C0    bnez    v0,0x31E3E8                                       ; asm/controls/CustomFuncs.asm line 217
+0031E3C4    nop                                                       ; asm/controls/CustomFuncs.asm line 218
+0031E3C8    lhu     a0,0x378(s2)                                      ; asm/controls/CustomFuncs.asm line 219
+0031E3CC    andi    v0,a0,0xC                                         ; asm/controls/CustomFuncs.asm line 220
+0031E3D0    bnez    v0,0x31E3F0                                       ; asm/controls/CustomFuncs.asm line 221
+0031E3D4    nop                                                       ; asm/controls/CustomFuncs.asm line 222
+0031E3D8    lhu     a0,0x37C(s2)                                      ; asm/controls/CustomFuncs.asm line 223
+0031E3DC    andi    v0,a0,0x10                                        ; asm/controls/CustomFuncs.asm line 224
+0031E3E0    beqz    v0,0x31E3F0                                       ; asm/controls/CustomFuncs.asm line 225
+0031E3E4    nop                                                       ; asm/controls/CustomFuncs.asm line 226
+0031E3E8 @@do:                                                        ; asm/controls/CustomFuncs.asm line 227
+0031E3E8    b       0x31E3F4                                          ; asm/controls/CustomFuncs.asm line 228
+0031E3EC    ori     v0,r0,0x1                                         ; asm/controls/CustomFuncs.asm line 229
+0031E3F0 @@nope:                                                      ; asm/controls/CustomFuncs.asm line 230
+0031E3F0    ori     v0,r0,0x0                                         ; asm/controls/CustomFuncs.asm line 231
+0031E3F4 @@return:                                                    ; asm/controls/CustomFuncs.asm line 232
+0031E3F4    jr      ra                                                ; asm/controls/CustomFuncs.asm line 233
+0031E3F8    nop                                                       ; asm/controls/CustomFuncs.asm line 234
+0031E3FC .align 0x00000008                                            ; asm/controls/CustomFuncs.asm line 235
+0031E400 .org 0x0011C09C                                              ; asm/controls/CustomFuncs.asm line 267
+0011C09C .halfword 0x0001                                             ; asm/controls/CustomFuncs.asm line 268
+0011C09E .org 0x00118C5C                                              ; asm/controls/CustomFuncs.asm line 269
+00118C5C .halfword 0x0002                                             ; asm/controls/CustomFuncs.asm line 270
+00118C5E .close                                                       ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 11
+FFFFFFFF .open "unpacked/sub_main.bin","sub_main.bin",0x00552E00      ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 12
+00552E00 .close                                                       ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 14
+FFFFFFFF .open "unpacked/game.bin","game.bin",0x005BE900              ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 15
+005C257C @sheathebutton:                                              ; asm/controls/generalControls.asm line 1
+005BE900 .org 0x005C257C                                              ; asm/controls/generalControls.asm line 3
+005C257C .halfword 0x0220                                             ; asm/controls/generalControls.asm line 4
+005C29B0 @unsheatheinput:                                             ; asm/controls/generalControls.asm line 7
+005C29B4 @unsheathebutton:                                            ; asm/controls/generalControls.asm line 8
+005C2AF4 @kickbutton:                                                 ; asm/controls/generalControls.asm line 9
+006DFCB4 @tutorialbutton:                                             ; asm/controls/generalControls.asm line 10
+007203B0 @tutorialbuttonxys:                                          ; asm/controls/generalControls.asm line 11
+005C01F8 @crouchunsheatheinput:                                       ; asm/controls/generalControls.asm line 13
+005C257E .org 0x005C01F8                                              ; asm/controls/generalControls.asm line 15
+005C01F8    lhu     v0,0x368(s0)                                      ; asm/controls/generalControls.asm line 16
+005C01FC    andi    v0,0x100                                          ; asm/controls/generalControls.asm line 17
+005C0200 .org 0x005C257C                                              ; asm/controls/generalControls.asm line 19
+005C257C .halfword 0x0200                                             ; asm/controls/generalControls.asm line 20
+005C257E .org 0x005C29B0                                              ; asm/controls/generalControls.asm line 22
+005C29B0 .halfword 0x0368                                             ; asm/controls/generalControls.asm line 23
+005C29B2 .org 0x005C29B4                                              ; asm/controls/generalControls.asm line 24
+005C29B4 .halfword 0x0100                                             ; asm/controls/generalControls.asm line 25
+005C29B6 .org 0x005C2AF4                                              ; asm/controls/generalControls.asm line 26
+005C2AF4 .halfword 0x4000                                             ; asm/controls/generalControls.asm line 27
+005C2AF6 .org 0x006DFCB4                                              ; asm/controls/generalControls.asm line 28
+006DFCB4 .halfword 0x0002                                             ; asm/controls/generalControls.asm line 29
+005D4920 @eggattackinput:                                             ; asm/controls/generalControls.asm line 31
+005D4924 @eggattackbutton:                                            ; asm/controls/generalControls.asm line 32
+006DFCB6 .org 0x005D4920                                              ; asm/controls/generalControls.asm line 33
+005D4920 .halfword 0x0368                                             ; asm/controls/generalControls.asm line 34
+005D4922 .org 0x005D4924                                              ; asm/controls/generalControls.asm line 35
+005D4924 .halfword 0x0100                                             ; asm/controls/generalControls.asm line 36
+005D4926 .org 0x007203B0                                              ; asm/controls/generalControls.asm line 38
+007203B0 .halfword 0x0017                                             ; asm/controls/generalControls.asm line 39
+007203B2 .halfword 0x00B1                                             ; asm/controls/generalControls.asm line 40
+007203B4 .halfword 0x0012                                             ; asm/controls/generalControls.asm line 41
+007203B6 .halfword 0xFF06                                             ; asm/controls/generalControls.asm line 42
+005C28D0 @standingtocrouchrollbutton:                                 ; asm/controls/generalControls.asm line 50
+005C0194 @crouchtostandingbutton:                                     ; asm/controls/generalControls.asm line 51
+005C0264 @crouchgatheringbutton:                                      ; asm/controls/generalControls.asm line 52
+005C2998 @climbingbutton:                                             ; asm/controls/generalControls.asm line 53
+005C4E70 @cimbingledgeconfirmbutton:                                  ; asm/controls/generalControls.asm line 54
+005BF774 @climbingunknownbutton:                                      ; asm/controls/generalControls.asm line 55
+005C2B14 @gatheringbutton:                                            ; asm/controls/generalControls.asm line 56
+005C23E8 @unknownswappedbuttonb:                                      ; asm/controls/generalControls.asm line 57
+005C5834 @runningtorollbutton:                                        ; asm/controls/generalControls.asm line 58
+005C5C4C @unknownswappedbuttond:                                      ; asm/controls/generalControls.asm line 59
+005C6FB0 @unknownswappedbuttone:                                      ; asm/controls/generalControls.asm line 60
+005C6FF8 @unknownswappedbuttonf:                                      ; asm/controls/generalControls.asm line 61
+005C7438 @unknownswappedbuttong:                                      ; asm/controls/generalControls.asm line 62
+005C90F8 @unknownswappedbuttonh:                                      ; asm/controls/generalControls.asm line 63
+005C7610 @crouchtorollbutton:                                         ; asm/controls/generalControls.asm line 64
+005C7A14 @unknownswappedbuttoni:                                      ; asm/controls/generalControls.asm line 65
+005C9EEC @unknownswappedbuttonj:                                      ; asm/controls/generalControls.asm line 66
+005C9FE8 @unknownswappedbuttonk:                                      ; asm/controls/generalControls.asm line 67
+005C8834 @unknownfishingbuttona:                                      ; asm/controls/generalControls.asm line 68
+005C88B4 @unknownfishingbuttonb:                                      ; asm/controls/generalControls.asm line 69
+005C056C @unkcomborollbuttona:                                        ; asm/controls/generalControls.asm line 71
+005C075C @unkcomborollbuttonb:                                        ; asm/controls/generalControls.asm line 72
+005C0864 @unkcomborollbuttonc:                                        ; asm/controls/generalControls.asm line 73
+005C0634 @snsdbcomborollbutton:                                       ; asm/controls/generalControls.asm line 74
+005D48B8 @eggrollbutton:                                              ; asm/controls/generalControls.asm line 76
+005D4980 @egginteractbutton:                                          ; asm/controls/generalControls.asm line 77
+007203B8 .org 0x005D48B8                                              ; asm/controls/generalControls.asm line 79
+005D48B8 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 80
+005D48BA .org 0x005D4980                                              ; asm/controls/generalControls.asm line 81
+005D4980 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 82
+005D4982 .org 0x005C28D0                                              ; asm/controls/generalControls.asm line 84
+005C28D0 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 85
+005C28D2 .org 0x005C0194                                              ; asm/controls/generalControls.asm line 86
+005C0194 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 87
+005C0196 .org 0x005C0264                                              ; asm/controls/generalControls.asm line 88
+005C0264 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 89
+005C0266 .org 0x005C23E8                                              ; asm/controls/generalControls.asm line 90
+005C23E8 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 91
+005C23EA .org 0x005C5834                                              ; asm/controls/generalControls.asm line 92
+005C5834 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 93
+005C5836 .org 0x005C5C4C                                              ; asm/controls/generalControls.asm line 94
+005C5C4C .halfword 0x0040                                             ; asm/controls/generalControls.asm line 95
+005C5C4E .org 0x005C6FB0                                              ; asm/controls/generalControls.asm line 96
+005C6FB0 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 97
+005C6FB2 .org 0x005C6FF8                                              ; asm/controls/generalControls.asm line 98
+005C6FF8 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 99
+005C6FFA .org 0x005C7438                                              ; asm/controls/generalControls.asm line 100
+005C7438 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 101
+005C743A .org 0x005C90F8                                              ; asm/controls/generalControls.asm line 102
+005C90F8 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 103
+005C90FA .org 0x005C7A14                                              ; asm/controls/generalControls.asm line 104
+005C7A14 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 105
+005C7A16 .org 0x005C9EEC                                              ; asm/controls/generalControls.asm line 106
+005C9EEC .halfword 0x0040                                             ; asm/controls/generalControls.asm line 107
+005C9EEE .org 0x005C9FE8                                              ; asm/controls/generalControls.asm line 108
+005C9FE8 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 109
+005C9FEA .org 0x005C2998                                              ; asm/controls/generalControls.asm line 110
+005C2998 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 111
+005C299A .org 0x005C4E70                                              ; asm/controls/generalControls.asm line 112
+005C4E70 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 113
+005C4E72 .org 0x005BF774                                              ; asm/controls/generalControls.asm line 114
+005BF774 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 115
+005BF776 .org 0x005C2B14                                              ; asm/controls/generalControls.asm line 116
+005C2B14 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 117
+005C2B16 .org 0x005C7610                                              ; asm/controls/generalControls.asm line 118
+005C7610 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 119
+005C7612 .org 0x005C8834                                              ; asm/controls/generalControls.asm line 121
+005C8834 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 122
+005C8836 .org 0x005C88B4                                              ; asm/controls/generalControls.asm line 123
+005C88B4 .halfword 0x0020                                             ; asm/controls/generalControls.asm line 124
+005C88B6 .org 0x005C056C                                              ; asm/controls/generalControls.asm line 126
+005C056C .halfword 0x0040                                             ; asm/controls/generalControls.asm line 127
+005C056E .org 0x005C075C                                              ; asm/controls/generalControls.asm line 128
+005C075C .halfword 0x0040                                             ; asm/controls/generalControls.asm line 129
+005C075E .org 0x005C0864                                              ; asm/controls/generalControls.asm line 130
+005C0864 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 131
+005C0866 .org 0x005C0634                                              ; asm/controls/generalControls.asm line 132
+005C0634 .halfword 0x0040                                             ; asm/controls/generalControls.asm line 133
+005C0B1C @snsbasicrollbutton:                                         ; asm/controls/snsControls.asm line 1
+005C119C @snsguardrollbutton:                                         ; asm/controls/snsControls.asm line 2
+005C0636 .org 0x005C0B1C                                              ; asm/controls/snsControls.asm line 4
+005C0B1C .halfword 0x0040                                             ; asm/controls/snsControls.asm line 5
+005C0B1E .org 0x005C119C                                              ; asm/controls/snsControls.asm line 6
+005C119C .halfword 0x0040                                             ; asm/controls/snsControls.asm line 7
+005C0B48 @snsbasicattack:                                             ; asm/controls/snsControls.asm line 14
+005CF260 @snsbouncerecoverinput:                                      ; asm/controls/snsControls.asm line 16
+005CF264 @snsbouncerecoverbutton:                                     ; asm/controls/snsControls.asm line 17
+005C11C8 @snsguardslashinput:                                         ; asm/controls/snsControls.asm line 18
+005C11CC @snsguardslashbutton:                                        ; asm/controls/snsControls.asm line 19
+005C5408 @snsrolltoupslashinput:                                      ; asm/controls/snsControls.asm line 20
+005C540C @snsrolltoupslashbutton:                                     ; asm/controls/snsControls.asm line 21
+005C69E0 @snssiderolltoupslashinput:                                  ; asm/controls/snsControls.asm line 22
+005C69E4 @snssiderolltoupslashbutton:                                 ; asm/controls/snsControls.asm line 23
+005C1098 @snsbasicend:                                                ; asm/controls/snsControls.asm line 25
+005CEC60 @snscomboend:                                                ; asm/controls/snsControls.asm line 26
+005C119E .org 0x005C1198                                              ; asm/controls/snsControls.asm line 28
+005C1198    jal     0x31E0A8                                          ; asm/controls/snsControls.asm line 29
+005C119C    dmove   a0,s0                                             ; asm/controls/snsControls.asm line 30
+005C11A0    b       0x5C1220                                          ; asm/controls/snsControls.asm line 31
+005C11A4    nop                                                       ; asm/controls/snsControls.asm line 32
+005C11A8 .org 0x005C11C8                                              ; asm/controls/snsControls.asm line 34
+005C11C8 .halfword 0x0368                                             ; asm/controls/snsControls.asm line 35
+005C11CA .org 0x005C11CC                                              ; asm/controls/snsControls.asm line 36
+005C11CC .halfword 0x0120                                             ; asm/controls/snsControls.asm line 37
+005C11CE .org 0x005C5408                                              ; asm/controls/snsControls.asm line 38
+005C5408 .halfword 0x0368                                             ; asm/controls/snsControls.asm line 39
+005C540A .org 0x005C540C                                              ; asm/controls/snsControls.asm line 40
+005C540C .halfword 0x0100                                             ; asm/controls/snsControls.asm line 41
+005C540E .org 0x005C69E0                                              ; asm/controls/snsControls.asm line 42
+005C69E0 .halfword 0x0368                                             ; asm/controls/snsControls.asm line 43
+005C69E2 .org 0x005C69E4                                              ; asm/controls/snsControls.asm line 44
+005C69E4 .halfword 0x0100                                             ; asm/controls/snsControls.asm line 45
+005C69E6 .org 0x005CF260                                              ; asm/controls/snsControls.asm line 46
+005CF260 .halfword 0x0368                                             ; asm/controls/snsControls.asm line 47
+005CF262 .org 0x005CF264                                              ; asm/controls/snsControls.asm line 48
+005CF264 .halfword 0x0120                                             ; asm/controls/snsControls.asm line 49
+005CEBF0 @snscomboattack:                                             ; asm/controls/snsControls.asm line 52
+005CF04C @snsjumpcomboattack:                                         ; asm/controls/snsControls.asm line 53
+005CF70C @snsupswingcomboattack:                                      ; asm/controls/snsControls.asm line 54
+005CEC88 @snstonormal:                                                ; asm/controls/snsControls.asm line 56
+005CF266 .org 0x005CEBF0                                              ; asm/controls/snsControls.asm line 58
+005CEBF0    dmove   a0,s1                                             ; asm/controls/snsControls.asm line 59
+005CEBF4    jal     0x116E80                                          ; asm/controls/snsControls.asm line 60
+005CEBF8    dmove   a1,zero                                           ; asm/controls/snsControls.asm line 61
+005CEBFC    beqz    v0,0x5CEC88                                       ; asm/controls/snsControls.asm line 62
+005CEC00    mov.s   f12,f20                                           ; asm/controls/snsControls.asm line 63
+005CEC04    dmove   a0,s1                                             ; asm/controls/snsControls.asm line 64
+005CEC08    jal     0x116E80                                          ; asm/controls/snsControls.asm line 65
+005CEC0C    dmove   a1,zero                                           ; asm/controls/snsControls.asm line 66
+005CEC10    bnez    v0,0x5CEC88                                       ; asm/controls/snsControls.asm line 67
+005CEC14    nop                                                       ; asm/controls/snsControls.asm line 68
+005CEC18    lhu     v1,0x368(s1)                                      ; asm/controls/snsControls.asm line 69
+005CEC1C    andi    v1,0x100                                          ; asm/controls/snsControls.asm line 70
+005CEC20    beqz    v1,0x5CEC38                                       ; asm/controls/snsControls.asm line 71
+005CEC24    nop                                                       ; asm/controls/snsControls.asm line 72
+005CEC28    ori     v0,r0,0x1                                         ; asm/controls/snsControls.asm line 73
+005CEC2C    b       0x5CEC88                                          ; asm/controls/snsControls.asm line 74
+005CEC30    sb      v0,0x6(s1)                                        ; asm/controls/snsControls.asm line 75
+005CEC34    nop                                                       ; asm/controls/snsControls.asm line 76
+005CEC38 @@checkcircle:                                               ; asm/controls/snsControls.asm line 77
+005CEC38    lhu     v0,0x368(s1)                                      ; asm/controls/snsControls.asm line 78
+005CEC3C    andi    v0,0x20                                           ; asm/controls/snsControls.asm line 79
+005CEC40    beqz    v0,0x5CEC88                                       ; asm/controls/snsControls.asm line 80
+005CEC44    nop                                                       ; asm/controls/snsControls.asm line 81
+005CEC48    ori     v0,r0,0x2                                         ; asm/controls/snsControls.asm line 82
+005CEC4C    sb      v0,0x6(s1)                                        ; asm/controls/snsControls.asm line 83
+005CEC50    b       0x5CEC88                                          ; asm/controls/snsControls.asm line 84
+005CEC54 .org 0x005CF04C                                              ; asm/controls/snsControls.asm line 86
+005CF04C    lhu     v0,0x368(s0)                                      ; asm/controls/snsControls.asm line 87
+005CF050    andi    v0,0x100                                          ; asm/controls/snsControls.asm line 88
+005CF054    beqz    v0,0x5CF080                                       ; asm/controls/snsControls.asm line 89
+005CF058    nop                                                       ; asm/controls/snsControls.asm line 90
+005CF05C    b       0x5CF080                                          ; asm/controls/snsControls.asm line 91
+005CF060 .org 0x005CF70C                                              ; asm/controls/snsControls.asm line 93
+005CF70C    lhu     v0,0x368(s0)                                      ; asm/controls/snsControls.asm line 94
+005CF710    andi    v0,0x100                                          ; asm/controls/snsControls.asm line 95
+005CF714    beqz    v0,0x5CF738                                       ; asm/controls/snsControls.asm line 96
+005CF718    nop                                                       ; asm/controls/snsControls.asm line 97
+005CF71C    b       0x5CF750                                          ; asm/controls/snsControls.asm line 98
+005CF720    lhu     v0,0x368(s0)                                      ; asm/controls/snsControls.asm line 99
+005CF724    andi    v0,0x20                                           ; asm/controls/snsControls.asm line 100
+005CF728    beqz    v0,0x5CF760                                       ; asm/controls/snsControls.asm line 101
+005CF72C    nop                                                       ; asm/controls/snsControls.asm line 102
+005CF730    nop                                                       ; asm/controls/snsControls.asm line 103
+005C0BFC @dbbasicrollbutton:                                          ; asm/controls/dbControls.asm line 1
+005CF734 .org 0x005C0BFC                                              ; asm/controls/dbControls.asm line 3
+005C0BFC .halfword 0x0040                                             ; asm/controls/dbControls.asm line 4
+005C0BFE .org 0x005D0148                                              ; asm/controls/dbControls.asm line 7
+005D0148    lhu     v1,0x368(s1)                                      ; asm/controls/dbControls.asm line 8
+005D014C    andi    v1,0x100                                          ; asm/controls/dbControls.asm line 9
+005D0150    beqz    v1,0x5D0184                                       ; asm/controls/dbControls.asm line 10
+005D0154    nop                                                       ; asm/controls/dbControls.asm line 11
+005D0158    lhu     v1,0x368(s1)                                      ; asm/controls/dbControls.asm line 12
+005D015C    andi    v1,0x20                                           ; asm/controls/dbControls.asm line 13
+005D0160    beqz    v1,0x5D0178                                       ; asm/controls/dbControls.asm line 14
+005D0164    nop                                                       ; asm/controls/dbControls.asm line 15
+005D0168    ori     v0,r0,0x4                                         ; asm/controls/dbControls.asm line 16
+005D016C    sb      v0,0x6(s1)                                        ; asm/controls/dbControls.asm line 17
+005D0170    b       0x5D01C8                                          ; asm/controls/dbControls.asm line 18
+005D0174    nop                                                       ; asm/controls/dbControls.asm line 19
+005D0178 @@dbtriangle:                                                ; asm/controls/dbControls.asm line 20
+005D0178    ori     v0,r0,0x1                                         ; asm/controls/dbControls.asm line 21
+005D017C    b       0x5D01C8                                          ; asm/controls/dbControls.asm line 22
+005D0180    sb      v0,0x6(s1)                                        ; asm/controls/dbControls.asm line 23
+005D0184 @@dbcheckcircle:                                             ; asm/controls/dbControls.asm line 24
+005D0184    lhu     v1,0x368(s1)                                      ; asm/controls/dbControls.asm line 25
+005D0188    andi    v1,0x20                                           ; asm/controls/dbControls.asm line 26
+005D018C    beqz    v1,0x5D01C8                                       ; asm/controls/dbControls.asm line 27
+005D0190    nop                                                       ; asm/controls/dbControls.asm line 28
+005D0194    lhu     v1,0x378(s1)                                      ; asm/controls/dbControls.asm line 29
+005D0198    andi    v1,0x800                                          ; asm/controls/dbControls.asm line 30
+005D019C    beqz    v1,0x5D01B0                                       ; asm/controls/dbControls.asm line 31
+005D01A0    nop                                                       ; asm/controls/dbControls.asm line 32
+005D01A4    ori     v0,r0,0x3                                         ; asm/controls/dbControls.asm line 33
+005D01A8    b       0x5D01C8                                          ; asm/controls/dbControls.asm line 34
+005D01AC    sb      v0,0x6(s1)                                        ; asm/controls/dbControls.asm line 35
+005D01B0 @@dbnotleft:                                                 ; asm/controls/dbControls.asm line 36
+005D01B0    ori     v0,r0,0x2                                         ; asm/controls/dbControls.asm line 37
+005D01B4    b       0x5D01C8                                          ; asm/controls/dbControls.asm line 38
+005D01B8    sb      v0,0x6(s1)                                        ; asm/controls/dbControls.asm line 39
+005D01BC    nop                                                       ; asm/controls/dbControls.asm line 40
+005D01C0 .org 0x005D0A6C                                              ; asm/controls/dbControls.asm line 42
+005D0A6C    lhu     v0,0x368(s0)                                      ; asm/controls/dbControls.asm line 43
+005D0A70    andi    v0,0x100                                          ; asm/controls/dbControls.asm line 44
+005D0A74    beqz    v0,0x5D0AA8                                       ; asm/controls/dbControls.asm line 45
+005D0A78    nop                                                       ; asm/controls/dbControls.asm line 46
+005D0A7C    ori     v0,r0,0x1                                         ; asm/controls/dbControls.asm line 47
+005D0A80    sb      v0,0x6(s0)                                        ; asm/controls/dbControls.asm line 48
+005D0A84    b       0x5D0AA8                                          ; asm/controls/dbControls.asm line 49
+005D0A88    nop                                                       ; asm/controls/dbControls.asm line 50
+005D0A8C .org 0x005D0C5C                                              ; asm/controls/dbControls.asm line 52
+005D0C5C    lhu     v1,0x368(s0)                                      ; asm/controls/dbControls.asm line 53
+005D0C60    andi    v1,0x100                                          ; asm/controls/dbControls.asm line 54
+005D0C64    beqz    v1,0x5D0C7C                                       ; asm/controls/dbControls.asm line 55
+005D0C68    nop                                                       ; asm/controls/dbControls.asm line 56
+005D0C6C    ori     v0,r0,0x1                                         ; asm/controls/dbControls.asm line 57
+005D0C70    sb      v0,0x6(s0)                                        ; asm/controls/dbControls.asm line 58
+005D0C74    b       0x5D0CC8                                          ; asm/controls/dbControls.asm line 59
+005D0C78    nop                                                       ; asm/controls/dbControls.asm line 60
+005D0C7C @@dbcheckcircle:                                             ; asm/controls/dbControls.asm line 61
+005D0C7C    lhu     v1,0x368(s0)                                      ; asm/controls/dbControls.asm line 62
+005D0C80    andi    v1,0x20                                           ; asm/controls/dbControls.asm line 63
+005D0C84    beqz    v1,0x5D0CC8                                       ; asm/controls/dbControls.asm line 64
+005D0C88    nop                                                       ; asm/controls/dbControls.asm line 65
+005D0C8C    lhu     v1,0x378(s0)                                      ; asm/controls/dbControls.asm line 66
+005D0C90    andi    v1,0x800                                          ; asm/controls/dbControls.asm line 67
+005D0C94    beqz    v1,0x5D0CA8                                       ; asm/controls/dbControls.asm line 68
+005D0C98    nop                                                       ; asm/controls/dbControls.asm line 69
+005D0C9C    ori     v0,r0,0x3                                         ; asm/controls/dbControls.asm line 70
+005D0CA0    b       0x5D0CC8                                          ; asm/controls/dbControls.asm line 71
+005D0CA4    sb      v0,0x6(s0)                                        ; asm/controls/dbControls.asm line 72
+005D0CA8 @@dbnotleft:                                                 ; asm/controls/dbControls.asm line 73
+005D0CA8    ori     v0,r0,0x2                                         ; asm/controls/dbControls.asm line 74
+005D0CAC    b       0x5D0CC8                                          ; asm/controls/dbControls.asm line 75
+005D0CB0    sb      v0,0x6(s0)                                        ; asm/controls/dbControls.asm line 76
+005D0CB4    nop                                                       ; asm/controls/dbControls.asm line 77
+005C0CD4 @gsbasicrollbutton:                                          ; asm/controls/gsControls.asm line 1
+005C11F4 @gsguardrollbutton:                                          ; asm/controls/gsControls.asm line 2
+005D0CB8 .org 0x005C0CD4                                              ; asm/controls/gsControls.asm line 4
+005C0CD4 .halfword 0x0040                                             ; asm/controls/gsControls.asm line 5
+005C0CD6 .org 0x005C11F4                                              ; asm/controls/gsControls.asm line 6
+005C11F4 .halfword 0x0040                                             ; asm/controls/gsControls.asm line 7
+005CBED0 @gsbounceinput:                                              ; asm/controls/gsControls.asm line 15
+005CBED4 @gsbouncebutton:                                             ; asm/controls/gsControls.asm line 16
+005C11F6 .org 0x005CBED0                                              ; asm/controls/gsControls.asm line 18
+005CBED0 .halfword 0x0368                                             ; asm/controls/gsControls.asm line 19
+005CBED2 .org 0x005CBED4                                              ; asm/controls/gsControls.asm line 20
+005CBED4 .halfword 0x0120                                             ; asm/controls/gsControls.asm line 21
+005C0568 @gscomboend:                                                 ; asm/controls/gsControls.asm line 28
+005C0360 @gscomboattacks:                                             ; asm/controls/gsControls.asm line 30
+005CBED6 .org 0x005C0360                                              ; asm/controls/gsControls.asm line 31
+005C0360    beqz    s0,0x5C0414                                       ; asm/controls/gsControls.asm line 32
+005C0364    nop                                                       ; asm/controls/gsControls.asm line 33
+005C0368    ori     r1,r0,0x1                                         ; asm/controls/gsControls.asm line 34
+005C036C    beq     s0,r1,0x5C04B4                                    ; asm/controls/gsControls.asm line 34
+005C0370    nop                                                       ; asm/controls/gsControls.asm line 35
+005C0374    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 36
+005C0378    andi    v1,0x100                                          ; asm/controls/gsControls.asm line 37
+005C037C    beqz    v1,0x5C0568                                       ; asm/controls/gsControls.asm line 38
+005C0380    nop                                                       ; asm/controls/gsControls.asm line 39
+005C0384    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 40
+005C0388    andi    v1,0x20                                           ; asm/controls/gsControls.asm line 41
+005C038C    beqz    v1,0x5C03D4                                       ; asm/controls/gsControls.asm line 42
+005C0390    nop                                                       ; asm/controls/gsControls.asm line 43
+005C0394    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 44
+005C0398    andi    v1,0x400                                          ; asm/controls/gsControls.asm line 45
+005C039C    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 46
+005C03A0    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 47
+005C03A4    beqz    v1,0x5C03C0                                       ; asm/controls/gsControls.asm line 48
+005C03A8    nop                                                       ; asm/controls/gsControls.asm line 49
+005C03AC    ori     a2,r0,0x43                                        ; asm/controls/gsControls.asm line 50
+005C03B0    jal     0x580840                                          ; asm/controls/gsControls.asm line 51
+005C03B4    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 52
+005C03B8    b       0x5C0568                                          ; asm/controls/gsControls.asm line 53
+005C03BC    nop                                                       ; asm/controls/gsControls.asm line 54
+005C03C0 @@hrnotright:                                                ; asm/controls/gsControls.asm line 55
+005C03C0    ori     a2,r0,0xF                                         ; asm/controls/gsControls.asm line 56
+005C03C4    jal     0x580840                                          ; asm/controls/gsControls.asm line 57
+005C03C8    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 58
+005C03CC    b       0x5C0568                                          ; asm/controls/gsControls.asm line 59
+005C03D0    nop                                                       ; asm/controls/gsControls.asm line 60
+005C03D4 @@hrtriangleonly:                                            ; asm/controls/gsControls.asm line 61
+005C03D4    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 62
+005C03D8    andi    v1,0x800                                          ; asm/controls/gsControls.asm line 63
+005C03DC    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 64
+005C03E0    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 65
+005C03E4    beqz    v1,0x5C0400                                       ; asm/controls/gsControls.asm line 66
+005C03E8    nop                                                       ; asm/controls/gsControls.asm line 67
+005C03EC    ori     a2,r0,0x42                                        ; asm/controls/gsControls.asm line 68
+005C03F0    jal     0x580840                                          ; asm/controls/gsControls.asm line 69
+005C03F4    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 70
+005C03F8    b       0x5C0568                                          ; asm/controls/gsControls.asm line 71
+005C03FC    nop                                                       ; asm/controls/gsControls.asm line 72
+005C0400 @@hrnotleft:                                                 ; asm/controls/gsControls.asm line 73
+005C0400    ori     a2,r0,0x11                                        ; asm/controls/gsControls.asm line 74
+005C0404    jal     0x580840                                          ; asm/controls/gsControls.asm line 75
+005C0408    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 76
+005C040C    b       0x5C0568                                          ; asm/controls/gsControls.asm line 77
+005C0410    nop                                                       ; asm/controls/gsControls.asm line 78
+005C0414 @@downwardcombos:                                            ; asm/controls/gsControls.asm line 79
+005C0414    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 80
+005C0418    andi    v1,0x20                                           ; asm/controls/gsControls.asm line 81
+005C041C    beqz    v1,0x5C0568                                       ; asm/controls/gsControls.asm line 82
+005C0420    nop                                                       ; asm/controls/gsControls.asm line 83
+005C0424    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 84
+005C0428    andi    v1,0x100                                          ; asm/controls/gsControls.asm line 85
+005C042C    beqz    v1,0x5C0474                                       ; asm/controls/gsControls.asm line 86
+005C0430    nop                                                       ; asm/controls/gsControls.asm line 87
+005C0434    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 88
+005C0438    andi    v1,0x400                                          ; asm/controls/gsControls.asm line 89
+005C043C    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 90
+005C0440    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 91
+005C0444    beqz    v1,0x5C0460                                       ; asm/controls/gsControls.asm line 92
+005C0448    nop                                                       ; asm/controls/gsControls.asm line 93
+005C044C    ori     a2,r0,0x3F                                        ; asm/controls/gsControls.asm line 94
+005C0450    jal     0x580840                                          ; asm/controls/gsControls.asm line 95
+005C0454    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 96
+005C0458    b       0x5C0568                                          ; asm/controls/gsControls.asm line 97
+005C045C    nop                                                       ; asm/controls/gsControls.asm line 98
+005C0460 @@dwnotright:                                                ; asm/controls/gsControls.asm line 99
+005C0460    ori     a2,r0,0xD                                         ; asm/controls/gsControls.asm line 100
+005C0464    jal     0x580840                                          ; asm/controls/gsControls.asm line 101
+005C0468    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 102
+005C046C    b       0x5C0568                                          ; asm/controls/gsControls.asm line 103
+005C0470    nop                                                       ; asm/controls/gsControls.asm line 104
+005C0474 @@dwcircleonly:                                              ; asm/controls/gsControls.asm line 105
+005C0474    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 106
+005C0478    andi    v1,0x800                                          ; asm/controls/gsControls.asm line 107
+005C047C    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 108
+005C0480    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 109
+005C0484    beqz    v1,0x5C04A0                                       ; asm/controls/gsControls.asm line 110
+005C0488    nop                                                       ; asm/controls/gsControls.asm line 111
+005C048C    ori     a2,r0,0x40                                        ; asm/controls/gsControls.asm line 112
+005C0490    jal     0x580840                                          ; asm/controls/gsControls.asm line 113
+005C0494    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 114
+005C0498    b       0x5C0568                                          ; asm/controls/gsControls.asm line 115
+005C049C    nop                                                       ; asm/controls/gsControls.asm line 116
+005C04A0 @@dwnotleft:                                                 ; asm/controls/gsControls.asm line 117
+005C04A0    ori     a2,r0,0x12                                        ; asm/controls/gsControls.asm line 118
+005C04A4    jal     0x580840                                          ; asm/controls/gsControls.asm line 119
+005C04A8    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 120
+005C04AC    b       0x5C0568                                          ; asm/controls/gsControls.asm line 121
+005C04B0    nop                                                       ; asm/controls/gsControls.asm line 122
+005C04B4 @@backwardcombos:                                            ; asm/controls/gsControls.asm line 123
+005C04B4    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 124
+005C04B8    andi    v1,0x100                                          ; asm/controls/gsControls.asm line 125
+005C04BC    beqz    v1,0x5C0504                                       ; asm/controls/gsControls.asm line 126
+005C04C0    nop                                                       ; asm/controls/gsControls.asm line 127
+005C04C4    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 128
+005C04C8    andi    v1,0x400                                          ; asm/controls/gsControls.asm line 129
+005C04CC    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 130
+005C04D0    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 131
+005C04D4    beqz    v1,0x5C04F0                                       ; asm/controls/gsControls.asm line 132
+005C04D8    nop                                                       ; asm/controls/gsControls.asm line 133
+005C04DC    ori     a2,r0,0x44                                        ; asm/controls/gsControls.asm line 134
+005C04E0    jal     0x580840                                          ; asm/controls/gsControls.asm line 135
+005C04E4    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 136
+005C04E8    b       0x5C0568                                          ; asm/controls/gsControls.asm line 137
+005C04EC    nop                                                       ; asm/controls/gsControls.asm line 138
+005C04F0 @@bwnotright:                                                ; asm/controls/gsControls.asm line 139
+005C04F0    ori     a2,r0,0x10                                        ; asm/controls/gsControls.asm line 140
+005C04F4    jal     0x580840                                          ; asm/controls/gsControls.asm line 141
+005C04F8    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 142
+005C04FC    b       0x5C0568                                          ; asm/controls/gsControls.asm line 143
+005C0500    nop                                                       ; asm/controls/gsControls.asm line 144
+005C0504 @@bwtestcircle:                                              ; asm/controls/gsControls.asm line 145
+005C0504    lhu     v1,0x368(s1)                                      ; asm/controls/gsControls.asm line 146
+005C0508    andi    v1,0x20                                           ; asm/controls/gsControls.asm line 147
+005C050C    beqz    v1,0x5C0568                                       ; asm/controls/gsControls.asm line 148
+005C0510    nop                                                       ; asm/controls/gsControls.asm line 149
+005C0514    lhu     v1,0x378(s1)                                      ; asm/controls/gsControls.asm line 150
+005C0518    andi    v1,0x800                                          ; asm/controls/gsControls.asm line 151
+005C051C    dmove   a0,s1                                             ; asm/controls/gsControls.asm line 152
+005C0520    ori     a1,r0,0x1                                         ; asm/controls/gsControls.asm line 153
+005C0524    beqz    v1,0x5C0540                                       ; asm/controls/gsControls.asm line 154
+005C0528    nop                                                       ; asm/controls/gsControls.asm line 155
+005C052C    ori     a2,r0,0x45                                        ; asm/controls/gsControls.asm line 156
+005C0530    jal     0x580840                                          ; asm/controls/gsControls.asm line 157
+005C0534    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 158
+005C0538    b       0x5C0568                                          ; asm/controls/gsControls.asm line 159
+005C053C    nop                                                       ; asm/controls/gsControls.asm line 160
+005C0540 @@bwnotleft:                                                 ; asm/controls/gsControls.asm line 161
+005C0540    ori     a2,r0,0x13                                        ; asm/controls/gsControls.asm line 162
+005C0544    jal     0x580840                                          ; asm/controls/gsControls.asm line 163
+005C0548    ori     a3,r0,0x4                                         ; asm/controls/gsControls.asm line 164
+005C054C    b       0x5C0568                                          ; asm/controls/gsControls.asm line 165
+005C0DAC @lancebasicrollbutton:                                       ; asm/controls/lanControls.asm line 1
+005C0550 .org 0x005C0DAC                                              ; asm/controls/lanControls.asm line 3
+005C0DAC .halfword 0x0040                                             ; asm/controls/lanControls.asm line 4
+005CE378 @lancehitwallstop:                                           ; asm/controls/lanControls.asm line 11
+005C0DAE .org 0x005CE378                                              ; asm/controls/lanControls.asm line 13
+005CE378    lhu     v1,0x368(s0)                                      ; asm/controls/lanControls.asm line 14
+005CE37C    andi    at,v1,0x100                                       ; asm/controls/lanControls.asm line 15
+005CE380    beqz    at,0x5CE3A0                                       ; asm/controls/lanControls.asm line 16
+005CE384    nop                                                       ; asm/controls/lanControls.asm line 17
+005CE388    andi    at,v1,0x20                                        ; asm/controls/lanControls.asm line 18
+005CE38C    beqz    at,0x5CE3A0                                       ; asm/controls/lanControls.asm line 19
+005CE390    ori     v1,r0,0x1                                         ; asm/controls/lanControls.asm line 20
+005CE394    sb      v1,0x6(s0)                                        ; asm/controls/lanControls.asm line 21
+005CE398    b       0x5CE3A0                                          ; asm/controls/lanControls.asm line 22
+005CE39C    nop                                                       ; asm/controls/lanControls.asm line 23
+005CF5E0 @lancebounceinput:                                           ; asm/controls/lanControls.asm line 25
+005CF5E4 @lancebouncebutton:                                          ; asm/controls/lanControls.asm line 26
+005CE3A0 .org 0x005CF5E0                                              ; asm/controls/lanControls.asm line 28
+005CF5E0 .halfword 0x0368                                             ; asm/controls/lanControls.asm line 29
+005CF5E2 .org 0x005CF5E4                                              ; asm/controls/lanControls.asm line 30
+005CF5E4 .halfword 0x0120                                             ; asm/controls/lanControls.asm line 31
+005CE1D0 @lancecombomedium:                                           ; asm/controls/lanControls.asm line 33
+005CE288 @lancecombomediumend:                                        ; asm/controls/lanControls.asm line 34
+005CF5E6 .org 0x005CE1D0                                              ; asm/controls/lanControls.asm line 36
+005CE1D0    lhu     v1,0x368(s1)                                      ; asm/controls/lanControls.asm line 37
+005CE1D4    andi    v1,0x120                                          ; asm/controls/lanControls.asm line 38
+005CE1D8    beqz    v1,0x5CE288                                       ; asm/controls/lanControls.asm line 39
+005CE1DC    ori     v1,r0,0x3                                         ; asm/controls/lanControls.asm line 40
+005CE1E0    beq     s0,v1,0x5CE288                                    ; asm/controls/lanControls.asm line 41
+005CE1E4    nop                                                       ; asm/controls/lanControls.asm line 42
+005CE1E8    lhu     v0,0x368(s1)                                      ; asm/controls/lanControls.asm line 43
+005CE1EC    andi    v0,0x100                                          ; asm/controls/lanControls.asm line 44
+005CE1F0    beqz    v0,0x5CE234                                       ; asm/controls/lanControls.asm line 45
+005CE1F4    nop                                                       ; asm/controls/lanControls.asm line 46
+005CE1F8    ori     v0,r0,0x2                                         ; asm/controls/lanControls.asm line 47
+005CE1FC    bne     s0,v0,0x5CE21C                                    ; asm/controls/lanControls.asm line 48
+005CE200    dmove   a0,s1                                             ; asm/controls/lanControls.asm line 49
+005CE204    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 50
+005CE208    ori     a2,r0,0x36                                        ; asm/controls/lanControls.asm line 51
+005CE20C    jal     0x580840                                          ; asm/controls/lanControls.asm line 52
+005CE210    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 53
+005CE214    b       0x5CE288                                          ; asm/controls/lanControls.asm line 54
+005CE218    nop                                                       ; asm/controls/lanControls.asm line 55
+005CE21C @@poke2:                                                     ; asm/controls/lanControls.asm line 56
+005CE21C    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 57
+005CE220    ori     a2,r0,0x35                                        ; asm/controls/lanControls.asm line 58
+005CE224    jal     0x580840                                          ; asm/controls/lanControls.asm line 59
+005CE228    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 60
+005CE22C    b       0x5CE288                                          ; asm/controls/lanControls.asm line 61
+005CE230    nop                                                       ; asm/controls/lanControls.asm line 62
+005CE234 @@checkcircle:                                               ; asm/controls/lanControls.asm line 63
+005CE234    lhu     v0,0x368(s1)                                      ; asm/controls/lanControls.asm line 64
+005CE238    andi    v0,0x20                                           ; asm/controls/lanControls.asm line 65
+005CE23C    beqz    v0,0x5CE288                                       ; asm/controls/lanControls.asm line 66
+005CE240    nop                                                       ; asm/controls/lanControls.asm line 67
+005CE244    ori     v0,r0,0x2                                         ; asm/controls/lanControls.asm line 68
+005CE248    bne     s0,v0,0x5CE268                                    ; asm/controls/lanControls.asm line 69
+005CE24C    dmove   a0,s1                                             ; asm/controls/lanControls.asm line 70
+005CE250    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 71
+005CE254    ori     a2,r0,0x3C                                        ; asm/controls/lanControls.asm line 72
+005CE258    jal     0x580840                                          ; asm/controls/lanControls.asm line 73
+005CE25C    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 74
+005CE260    b       0x5CE288                                          ; asm/controls/lanControls.asm line 75
+005CE264    nop                                                       ; asm/controls/lanControls.asm line 76
+005CE268 @@poke4:                                                     ; asm/controls/lanControls.asm line 77
+005CE268    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 78
+005CE26C    ori     a2,r0,0x3B                                        ; asm/controls/lanControls.asm line 79
+005CE270    jal     0x580840                                          ; asm/controls/lanControls.asm line 80
+005CE274    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 81
+005CE278    b       0x5CE288                                          ; asm/controls/lanControls.asm line 82
+005CE27C    nop                                                       ; asm/controls/lanControls.asm line 83
+005CE8C8 @lancecombohigh:                                             ; asm/controls/lanControls.asm line 85
+005CE978 @lancecombohighend:                                          ; asm/controls/lanControls.asm line 86
+005CE280 .org 0x005CE8C8                                              ; asm/controls/lanControls.asm line 88
+005CE8C8    lhu     v1,0x368(s1)                                      ; asm/controls/lanControls.asm line 89
+005CE8CC    andi    v1,0x120                                          ; asm/controls/lanControls.asm line 90
+005CE8D0    beqz    v1,0x5CE978                                       ; asm/controls/lanControls.asm line 91
+005CE8D4    ori     v1,r0,0x2                                         ; asm/controls/lanControls.asm line 92
+005CE8D8    beq     s0,v1,0x5CE978                                    ; asm/controls/lanControls.asm line 93
+005CE8DC    nop                                                       ; asm/controls/lanControls.asm line 94
+005CE8E0    lhu     v0,0x368(s1)                                      ; asm/controls/lanControls.asm line 95
+005CE8E4    andi    v0,0x100                                          ; asm/controls/lanControls.asm line 96
+005CE8E8    beqz    v0,0x5CE92C                                       ; asm/controls/lanControls.asm line 97
+005CE8EC    nop                                                       ; asm/controls/lanControls.asm line 98
+005CE8F0    ori     v0,r0,0x1                                         ; asm/controls/lanControls.asm line 99
+005CE8F4    bne     s0,v0,0x5CE914                                    ; asm/controls/lanControls.asm line 100
+005CE8F8    dmove   a0,s1                                             ; asm/controls/lanControls.asm line 101
+005CE8FC    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 102
+005CE900    ori     a2,r0,0x36                                        ; asm/controls/lanControls.asm line 103
+005CE904    jal     0x580840                                          ; asm/controls/lanControls.asm line 104
+005CE908    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 105
+005CE90C    b       0x5CE978                                          ; asm/controls/lanControls.asm line 106
+005CE910    nop                                                       ; asm/controls/lanControls.asm line 107
+005CE914 @@poke2:                                                     ; asm/controls/lanControls.asm line 108
+005CE914    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 109
+005CE918    ori     a2,r0,0x35                                        ; asm/controls/lanControls.asm line 110
+005CE91C    jal     0x580840                                          ; asm/controls/lanControls.asm line 111
+005CE920    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 112
+005CE924    b       0x5CE978                                          ; asm/controls/lanControls.asm line 113
+005CE928    nop                                                       ; asm/controls/lanControls.asm line 114
+005CE92C @@checkcircle:                                               ; asm/controls/lanControls.asm line 115
+005CE92C    lhu     v0,0x368(s1)                                      ; asm/controls/lanControls.asm line 116
+005CE930    andi    v0,0x20                                           ; asm/controls/lanControls.asm line 117
+005CE934    beqz    v0,0x5CE978                                       ; asm/controls/lanControls.asm line 118
+005CE938    nop                                                       ; asm/controls/lanControls.asm line 119
+005CE93C    ori     v0,r0,0x1                                         ; asm/controls/lanControls.asm line 120
+005CE940    bne     s0,v0,0x5CE960                                    ; asm/controls/lanControls.asm line 121
+005CE944    dmove   a0,s1                                             ; asm/controls/lanControls.asm line 122
+005CE948    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 123
+005CE94C    ori     a2,r0,0x3C                                        ; asm/controls/lanControls.asm line 124
+005CE950    jal     0x580840                                          ; asm/controls/lanControls.asm line 125
+005CE954    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 126
+005CE958    b       0x5CE978                                          ; asm/controls/lanControls.asm line 127
+005CE95C    nop                                                       ; asm/controls/lanControls.asm line 128
+005CE960 @@poke4:                                                     ; asm/controls/lanControls.asm line 129
+005CE960    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 130
+005CE964    ori     a2,r0,0x3B                                        ; asm/controls/lanControls.asm line 131
+005CE968    jal     0x580840                                          ; asm/controls/lanControls.asm line 132
+005CE96C    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 133
+005CE970    b       0x5CE978                                          ; asm/controls/lanControls.asm line 134
+005CE974    nop                                                       ; asm/controls/lanControls.asm line 135
+005CDD3C @lancechargecombo:                                           ; asm/controls/lanControls.asm line 137
+005CDDA0 @lancechargecomboend:                                        ; asm/controls/lanControls.asm line 138
+005CE978 .org 0x005CDD3C                                              ; asm/controls/lanControls.asm line 140
+005CDD3C    lhu     v0,0x368(s0)                                      ; asm/controls/lanControls.asm line 141
+005CDD40    andi    v0,0x100                                          ; asm/controls/lanControls.asm line 142
+005CDD44    dmove   a0,s0                                             ; asm/controls/lanControls.asm line 143
+005CDD48    beqz    v0,0x5CDD70                                       ; asm/controls/lanControls.asm line 144
+005CDD4C    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 145
+005CDD50    lhu     v1,0x368(s0)                                      ; asm/controls/lanControls.asm line 146
+005CDD54    andi    v1,0x20                                           ; asm/controls/lanControls.asm line 147
+005CDD58    beqz    v1,0x5CDD7C                                       ; asm/controls/lanControls.asm line 148
+005CDD5C    ori     a2,r0,0x23                                        ; asm/controls/lanControls.asm line 149
+005CDD60    jal     0x580840                                          ; asm/controls/lanControls.asm line 150
+005CDD64    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 151
+005CDD68    b       0x5CDDA0                                          ; asm/controls/lanControls.asm line 152
+005CDD6C    nop                                                       ; asm/controls/lanControls.asm line 153
+005CDD70 @@checkcircle:                                               ; asm/controls/lanControls.asm line 154
+005CDD70    lhu     v1,0x368(s0)                                      ; asm/controls/lanControls.asm line 155
+005CDD74    andi    v1,0x20                                           ; asm/controls/lanControls.asm line 156
+005CDD78    beqz    v1,0x5CDDA0                                       ; asm/controls/lanControls.asm line 157
+005CDD7C @@onlytriangle:                                              ; asm/controls/lanControls.asm line 158
+005CDD7C    ori     a2,r0,0x4A                                        ; asm/controls/lanControls.asm line 159
+005CDD80    jal     0x580840                                          ; asm/controls/lanControls.asm line 160
+005CDD84    ori     a3,r0,0x4                                         ; asm/controls/lanControls.asm line 161
+005CDD88    b       0x5CDDA0                                          ; asm/controls/lanControls.asm line 162
+005CDD8C    nop                                                       ; asm/controls/lanControls.asm line 163
+005C1150 @lanceguardattacks:                                          ; asm/controls/lanControls.asm line 165
+005C1220 @lanceguardattacksend:                                       ; asm/controls/lanControls.asm line 166
+005CDD90 .org 0x005C1150                                              ; asm/controls/lanControls.asm line 168
+005C1150    lhu     v1,0x368(s0)                                      ; asm/controls/lanControls.asm line 169
+005C1154    andi    v1,0x100                                          ; asm/controls/lanControls.asm line 170
+005C1158    beqz    v1,0x5C1220                                       ; asm/controls/lanControls.asm line 171
+005C115C    dmove   a0,s0                                             ; asm/controls/lanControls.asm line 172
+005C1160    lhu     v1,0x368(s0)                                      ; asm/controls/lanControls.asm line 173
+005C1164    andi    v1,0x20                                           ; asm/controls/lanControls.asm line 174
+005C1168    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 175
+005C116C    beqz    v1,0x5C1184                                       ; asm/controls/lanControls.asm line 176
+005C1170    ori     a2,r0,0x22                                        ; asm/controls/lanControls.asm line 177
+005C1174    jal     0x580840                                          ; asm/controls/lanControls.asm line 178
+005C1178    ori     a3,r0,0xC                                         ; asm/controls/lanControls.asm line 179
+005C117C    b       0x5C1220                                          ; asm/controls/lanControls.asm line 180
+005C1180    nop                                                       ; asm/controls/lanControls.asm line 181
+005C1184 @@onlytriangle:                                              ; asm/controls/lanControls.asm line 182
+005C1184    ori     a2,r0,0x28                                        ; asm/controls/lanControls.asm line 183
+005C1188    jal     0x580840                                          ; asm/controls/lanControls.asm line 184
+005C118C    ori     a3,r0,0xC                                         ; asm/controls/lanControls.asm line 185
+005C1190    b       0x5C1220                                          ; asm/controls/lanControls.asm line 186
+005C1194    nop                                                       ; asm/controls/lanControls.asm line 187
+005CA448 @lancehopattackinput:                                        ; asm/controls/lanControls.asm line 189
+005C1198 .org 0x005CA448                                              ; asm/controls/lanControls.asm line 191
+005CA448    lhu     v1,0x368(s1)                                      ; asm/controls/lanControls.asm line 192
+005CA44C    andi    v1,0x120                                          ; asm/controls/lanControls.asm line 193
+005CA450 .org 0x005CA4B0                                              ; asm/controls/lanControls.asm line 194
+005CA4B0    lhu     v0,0x368(s1)                                      ; asm/controls/lanControls.asm line 195
+005CA4B4    andi    at,v0,0x100                                       ; asm/controls/lanControls.asm line 196
+005CA4B8    beqz    at,0x5CA4D8                                       ; asm/controls/lanControls.asm line 197
+005CA4BC    dmove   a0,s1                                             ; asm/controls/lanControls.asm line 198
+005CA4C0    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 199
+005CA4C4    ori     a2,r0,0x24                                        ; asm/controls/lanControls.asm line 200
+005CA4C8    jal     0x580840                                          ; asm/controls/lanControls.asm line 201
+005CA4CC    ori     a3,r0,0xC                                         ; asm/controls/lanControls.asm line 202
+005CA4D0    b       0x5CA500                                          ; asm/controls/lanControls.asm line 203
+005CA4D4    nop                                                       ; asm/controls/lanControls.asm line 204
+005CA4D8 @@docircle:                                                  ; asm/controls/lanControls.asm line 205
+005CA4D8    ori     a1,r0,0x1                                         ; asm/controls/lanControls.asm line 206
+005CA4DC    ori     a2,r0,0x2D                                        ; asm/controls/lanControls.asm line 207
+005CA4E0    jal     0x580840                                          ; asm/controls/lanControls.asm line 208
+005CA4E4    ori     a3,r0,0xC                                         ; asm/controls/lanControls.asm line 209
+005CA4E8    b       0x5CA500                                          ; asm/controls/lanControls.asm line 210
+005CA4EC    nop                                                       ; asm/controls/lanControls.asm line 211
+005C0E64 @hammerbasicrollbutton:                                      ; asm/controls/hamControls.asm line 1
+005CCBF0 @hammerchargerollbutton:                                     ; asm/controls/hamControls.asm line 2
+005CA4F0 .org 0x005C0E64                                              ; asm/controls/hamControls.asm line 4
+005C0E64 .halfword 0x0040                                             ; asm/controls/hamControls.asm line 5
+005C0E66 .org 0x005CCBF0                                              ; asm/controls/hamControls.asm line 6
+005CCBF0 .halfword 0x0040                                             ; asm/controls/hamControls.asm line 7
+005CDA08 @hammerbounceinput:                                          ; asm/controls/hamControls.asm line 10
+005CDA0C @hammerbouncebutton:                                         ; asm/controls/hamControls.asm line 11
+005CCBF2 .org 0x005CDA08                                              ; asm/controls/hamControls.asm line 13
+005CDA08 .halfword 0x0368                                             ; asm/controls/hamControls.asm line 14
+005CDA0A .org 0x005CDA0C                                              ; asm/controls/hamControls.asm line 15
+005CDA0C .halfword 0x0120                                             ; asm/controls/hamControls.asm line 16
+005CC964 @hammercomboattack:                                          ; asm/controls/hamControls.asm line 18
+005CC998 @hammercomboend:                                             ; asm/controls/hamControls.asm line 19
+005CDA0E .org 0x005CC964                                              ; asm/controls/hamControls.asm line 21
+005CC964    lhu     v1,0x368(s0)                                      ; asm/controls/hamControls.asm line 22
+005CC968    andi    v1,0x100                                          ; asm/controls/hamControls.asm line 23
+005CC96C    beqz    v1,0x5CC998                                       ; asm/controls/hamControls.asm line 24
+005CC970    nop                                                       ; asm/controls/hamControls.asm line 25
+005CC974    nop                                                       ; asm/controls/hamControls.asm line 26
+005CC978    nop                                                       ; asm/controls/hamControls.asm line 27
+005CC97C    nop                                                       ; asm/controls/hamControls.asm line 28
+005CC980    nop                                                       ; asm/controls/hamControls.asm line 29
+005CC984    nop                                                       ; asm/controls/hamControls.asm line 30
+005CC988    nop                                                       ; asm/controls/hamControls.asm line 31
+005C0818 @hammercomboattack2:                                         ; asm/controls/hamControls.asm line 33
+005C0948 @hammercomboend2:                                            ; asm/controls/hamControls.asm line 34
+005CC98C .org 0x005C0818                                              ; asm/controls/hamControls.asm line 36
+005C0818    lhu     v1,0x368(s1)                                      ; asm/controls/hamControls.asm line 37
+005C081C    andi    v1,0x100                                          ; asm/controls/hamControls.asm line 38
+005C0820    beqz    v1,0x5C0948                                       ; asm/controls/hamControls.asm line 39
+005C0824    ori     a1,r0,0x1                                         ; asm/controls/hamControls.asm line 40
+005C0828    bne     s0,a1,0x5C0948                                    ; asm/controls/hamControls.asm line 41
+005C082C    nop                                                       ; asm/controls/hamControls.asm line 42
+005C0830    dmove   a0,s1                                             ; asm/controls/hamControls.asm line 43
+005C0834    ori     a2,r0,0x4B                                        ; asm/controls/hamControls.asm line 44
+005C0838    jal     0x580840                                          ; asm/controls/hamControls.asm line 45
+005C083C    ori     a3,r0,0x4                                         ; asm/controls/hamControls.asm line 46
+005C0840    b       0x5C0948                                          ; asm/controls/hamControls.asm line 47
+005C0844    nop                                                       ; asm/controls/hamControls.asm line 48
+005CFB94 @hammercomboattack3:                                         ; asm/controls/hamControls.asm line 50
+005CFBC8 @hammercomboend3:                                            ; asm/controls/hamControls.asm line 51
+005C0848 .org 0x005CFB94                                              ; asm/controls/hamControls.asm line 53
+005CFB94    lhu     v1,0x368(s0)                                      ; asm/controls/hamControls.asm line 54
+005CFB98    andi    v1,0x100                                          ; asm/controls/hamControls.asm line 55
+005CFB9C    beqz    v1,0x5CFBC8                                       ; asm/controls/hamControls.asm line 56
+005CFBA0    nop                                                       ; asm/controls/hamControls.asm line 57
+005CFBA4    nop                                                       ; asm/controls/hamControls.asm line 58
+005CFBA8    nop                                                       ; asm/controls/hamControls.asm line 59
+005CFBAC    nop                                                       ; asm/controls/hamControls.asm line 60
+005CFBB0    nop                                                       ; asm/controls/hamControls.asm line 61
+005CFBB4    nop                                                       ; asm/controls/hamControls.asm line 62
+005CFBB8    nop                                                       ; asm/controls/hamControls.asm line 63
+005CCD40 @hammerchargecancel:                                         ; asm/controls/hamControls.asm line 65
+005CCD78 @hammerchargecancelend:                                      ; asm/controls/hamControls.asm line 66
+005CFBBC .org 0x005CCD40                                              ; asm/controls/hamControls.asm line 68
+005CCD40    lhu     v1,0x368(s0)                                      ; asm/controls/hamControls.asm line 69
+005CCD44    andi    v1,0x100                                          ; asm/controls/hamControls.asm line 70
+005CCD48    beqz    v1,0x5CCD78                                       ; asm/controls/hamControls.asm line 71
+007266A0 @attackcaseaddresses:                                        ; asm/controls/basic_attack_ck.asm line 1
+005CCD4C .org 0x005C0AA0                                              ; asm/controls/basic_attack_ck.asm line 14
+005C0AA0    addiu   sp,-0x20                                          ; asm/controls/basic_attack_ck.asm line 15
+005C0AA4    sd      ra,0x10(sp)                                       ; asm/controls/basic_attack_ck.asm line 16
+005C0AA8    sq      s0,(sp)                                           ; asm/controls/basic_attack_ck.asm line 17
+005C0AAC    jal     0x581840                                          ; asm/controls/basic_attack_ck.asm line 18
+005C0AB0    dmove   s0,a0                                             ; asm/controls/basic_attack_ck.asm line 19
+005C0AB4    bnez    v0,0x5C0AD0                                       ; asm/controls/basic_attack_ck.asm line 20
+005C0AB8    nop                                                       ; asm/controls/basic_attack_ck.asm line 21
+005C0ABC    jal     0x1307A0                                          ; asm/controls/basic_attack_ck.asm line 22
+005C0AC0    nop                                                       ; asm/controls/basic_attack_ck.asm line 23
+005C0AC4    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 24
+005C0AC8    beq     v0,v1,0x5C1098                                    ; asm/controls/basic_attack_ck.asm line 25
+005C0ACC    nop                                                       ; asm/controls/basic_attack_ck.asm line 26
+005C0AD0 @@checksub:                                                  ; asm/controls/basic_attack_ck.asm line 27
+005C0AD0    lbu     v1,0x88C(s0)                                      ; asm/controls/basic_attack_ck.asm line 28
+005C0AD4    bnez    v1,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 29
+005C0AD8    ori     a0,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 30
+005C0ADC    jal     0x1307F0                                          ; asm/controls/basic_attack_ck.asm line 31
+005C0AE0    nop                                                       ; asm/controls/basic_attack_ck.asm line 32
+005C0AE4    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 33
+005C0AE8    beq     v0,v1,0x5C1098                                    ; asm/controls/basic_attack_ck.asm line 34
+005C0AEC    nop                                                       ; asm/controls/basic_attack_ck.asm line 35
+005C0AF0    lbu     v1,0x2(s0)                                        ; asm/controls/basic_attack_ck.asm line 36
+005C0AF4    sltiu   at,v1,0x7                                         ; asm/controls/basic_attack_ck.asm line 37
+005C0AF8    beqz    at,0x5C0B18                                       ; asm/controls/basic_attack_ck.asm line 38
+005C0AFC    lui     a0,0x72                                           ; asm/controls/basic_attack_ck.asm line 39
+005C0B00    sll     v1,v1,0x2                                         ; asm/controls/basic_attack_ck.asm line 40
+005C0B04    addiu   a0,0x66A0                                         ; asm/controls/basic_attack_ck.asm line 41
+005C0B08    addu    v1,a0                                             ; asm/controls/basic_attack_ck.asm line 42
+005C0B0C    lw      v1,(v1)                                           ; asm/controls/basic_attack_ck.asm line 43
+005C0B10    jr      v1                                                ; asm/controls/basic_attack_ck.asm line 44
+005C0B14    nop                                                       ; asm/controls/basic_attack_ck.asm line 45
+005C0B18 gscase:                                                      ; asm/controls/basic_attack_ck.asm line 46
+005C0B18    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 47
+005C0B1C    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 48
+005C0B20    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 49
+005C0B24    beq     v0,a3,0x5C0B54                                    ; asm/controls/basic_attack_ck.asm line 50
+005C0B28    ori     v1,r0,0x3                                         ; asm/controls/basic_attack_ck.asm line 51
+005C0B2C    beq     v0,v1,0x5C0B68                                    ; asm/controls/basic_attack_ck.asm line 52
+005C0B30    nop                                                       ; asm/controls/basic_attack_ck.asm line 53
+005C0B34    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 54
+005C0B38    beq     v0,v1,0x5C0B7C                                    ; asm/controls/basic_attack_ck.asm line 55
+005C0B3C    nop                                                       ; asm/controls/basic_attack_ck.asm line 56
+005C0B40    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 57
+005C0B44    beq     v0,v1,0x5C0B90                                    ; asm/controls/basic_attack_ck.asm line 58
+005C0B48    nop                                                       ; asm/controls/basic_attack_ck.asm line 59
+005C0B4C    b       0x5C0BA4                                          ; asm/controls/basic_attack_ck.asm line 60
+005C0B50    nop                                                       ; asm/controls/basic_attack_ck.asm line 61
+005C0B54 @@dokick:                                                    ; asm/controls/basic_attack_ck.asm line 62
+005C0B54    ori     a2,r0,0xE                                         ; asm/controls/basic_attack_ck.asm line 63
+005C0B58    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 64
+005C0B5C    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 65
+005C0B60    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 66
+005C0B64    nop                                                       ; asm/controls/basic_attack_ck.asm line 67
+005C0B68 @@dobackward:                                                ; asm/controls/basic_attack_ck.asm line 68
+005C0B68    ori     a2,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 69
+005C0B6C    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 70
+005C0B70    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 71
+005C0B74    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 72
+005C0B78    nop                                                       ; asm/controls/basic_attack_ck.asm line 73
+005C0B7C @@doside:                                                    ; asm/controls/basic_attack_ck.asm line 74
+005C0B7C    ori     a2,r0,0x0                                         ; asm/controls/basic_attack_ck.asm line 75
+005C0B80    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 76
+005C0B84    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 77
+005C0B88    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 78
+005C0B8C    nop                                                       ; asm/controls/basic_attack_ck.asm line 79
+005C0B90 @@dodownward:                                                ; asm/controls/basic_attack_ck.asm line 80
+005C0B90    ori     a2,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 81
+005C0B94    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 82
+005C0B98    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 83
+005C0B9C    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 84
+005C0BA0    nop                                                       ; asm/controls/basic_attack_ck.asm line 85
+005C0BA4 @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 86
+005C0BA4    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 87
+005C0BA8    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 88
+005C0BAC    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 89
+005C0BB0    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 90
+005C0BB4    ori     a2,r0,0x1C                                        ; asm/controls/basic_attack_ck.asm line 91
+005C0BB8    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 92
+005C0BBC    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 93
+005C0BC0    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 94
+005C0BC4    nop                                                       ; asm/controls/basic_attack_ck.asm line 95
+005C0BC8 bgcase:                                                      ; asm/controls/basic_attack_ck.asm line 96
+005C0BC8    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 97
+005C0BCC    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 98
+005C0BD0    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 99
+005C0BD4    beq     v0,a3,0x5C0C04                                    ; asm/controls/basic_attack_ck.asm line 100
+005C0BD8    ori     v1,r0,0x3                                         ; asm/controls/basic_attack_ck.asm line 101
+005C0BDC    beq     v0,v1,0x5C0C04                                    ; asm/controls/basic_attack_ck.asm line 102
+005C0BE0    nop                                                       ; asm/controls/basic_attack_ck.asm line 103
+005C0BE4    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 104
+005C0BE8    beq     v0,v1,0x5C0C28                                    ; asm/controls/basic_attack_ck.asm line 105
+005C0BEC    nop                                                       ; asm/controls/basic_attack_ck.asm line 106
+005C0BF0    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 107
+005C0BF4    beq     v0,v1,0x5C0CEC                                    ; asm/controls/basic_attack_ck.asm line 108
+005C0BF8    nop                                                       ; asm/controls/basic_attack_ck.asm line 109
+005C0BFC    b       0x5C0D0C                                          ; asm/controls/basic_attack_ck.asm line 110
+005C0C00    nop                                                       ; asm/controls/basic_attack_ck.asm line 111
+005C0C04 @@domelee:                                                   ; asm/controls/basic_attack_ck.asm line 112
+005C0C04    lbu     v1,0x763(s0)                                      ; asm/controls/basic_attack_ck.asm line 113
+005C0C08    bnez    v1,0x5C0C28                                       ; asm/controls/basic_attack_ck.asm line 114
+005C0C0C    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 115
+005C0C10    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 116
+005C0C14    ori     a2,r0,0x3D                                        ; asm/controls/basic_attack_ck.asm line 117
+005C0C18    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 118
+005C0C1C    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 119
+005C0C20    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 120
+005C0C24    nop                                                       ; asm/controls/basic_attack_ck.asm line 121
+005C0C28 @@dofire:                                                    ; asm/controls/basic_attack_ck.asm line 122
+005C0C28    dmove   s0,a0                                             ; asm/controls/basic_attack_ck.asm line 123
+005C0C2C    lbu     v0,0x1C(s0)                                       ; asm/controls/basic_attack_ck.asm line 124
+005C0C30    bnez    v0,0x5C0C50                                       ; asm/controls/basic_attack_ck.asm line 125
+005C0C34    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 126
+005C0C38    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 127
+005C0C3C    ori     a2,r0,0xC                                         ; asm/controls/basic_attack_ck.asm line 128
+005C0C40    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 129
+005C0C44    ori     a3,r0,0x5                                         ; asm/controls/basic_attack_ck.asm line 130
+005C0C48    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 131
+005C0C4C    nop                                                       ; asm/controls/basic_attack_ck.asm line 132
+005C0C50 @@firetype:                                                  ; asm/controls/basic_attack_ck.asm line 133
+005C0C50    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 134
+005C0C54    sb      a1,0x8ED(s0)                                      ; asm/controls/basic_attack_ck.asm line 135
+005C0C58    lhu     v1,0x368(s0)                                      ; asm/controls/basic_attack_ck.asm line 136
+005C0C5C    andi    v1,0x20                                           ; asm/controls/basic_attack_ck.asm line 137
+005C0C60    beqz    v1,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 138
+005C0C64    nop                                                       ; asm/controls/basic_attack_ck.asm line 139
+005C0C68    lbu     v1,0x56C(s0)                                      ; asm/controls/basic_attack_ck.asm line 140
+005C0C6C    lui     v0,0x5A                                           ; asm/controls/basic_attack_ck.asm line 141
+005C0C70    addiu   v0,v0,-0x464F                                     ; asm/controls/basic_attack_ck.asm line 142
+005C0C74    ori     a2,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 143
+005C0C78    sll     v1,v1,0x2                                         ; asm/controls/basic_attack_ck.asm line 144
+005C0C7C    addu    v0,v0,v1                                          ; asm/controls/basic_attack_ck.asm line 145
+005C0C80    lbu     v0,0x0(v0)                                        ; asm/controls/basic_attack_ck.asm line 146
+005C0C84    beq     v0,a2,0x5C0CD4                                    ; asm/controls/basic_attack_ck.asm line 147
+005C0C88    nop                                                       ; asm/controls/basic_attack_ck.asm line 148
+005C0C8C    beq     v0,a1,0x5C0CB8                                    ; asm/controls/basic_attack_ck.asm line 149
+005C0C90    nop                                                       ; asm/controls/basic_attack_ck.asm line 150
+005C0C94    beqz    v0,0x5C0CA4                                       ; asm/controls/basic_attack_ck.asm line 151
+005C0C98    nop                                                       ; asm/controls/basic_attack_ck.asm line 152
+005C0C9C    b       0x5C0CB8                                          ; asm/controls/basic_attack_ck.asm line 153
+005C0CA0    nop                                                       ; asm/controls/basic_attack_ck.asm line 154
+005C0CA4 @@bgtypec:                                                   ; asm/controls/basic_attack_ck.asm line 155
+005C0CA4    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 156
+005C0CA8    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 157
+005C0CAC    ori     a3,r0,0x5                                         ; asm/controls/basic_attack_ck.asm line 158
+005C0CB0    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 159
+005C0CB4    nop                                                       ; asm/controls/basic_attack_ck.asm line 160
+005C0CB8 @@bgtypeb:                                                   ; asm/controls/basic_attack_ck.asm line 161
+005C0CB8    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 162
+005C0CBC    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 163
+005C0CC0    ori     a2,r0,0x8                                         ; asm/controls/basic_attack_ck.asm line 164
+005C0CC4    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 165
+005C0CC8    ori     a3,r0,0x5                                         ; asm/controls/basic_attack_ck.asm line 166
+005C0CCC    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 167
+005C0CD0    nop                                                       ; asm/controls/basic_attack_ck.asm line 168
+005C0CD4 @@bgtypea:                                                   ; asm/controls/basic_attack_ck.asm line 169
+005C0CD4    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 170
+005C0CD8    ori     a2,r0,0xA                                         ; asm/controls/basic_attack_ck.asm line 171
+005C0CDC    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 172
+005C0CE0    ori     a3,r0,0x5                                         ; asm/controls/basic_attack_ck.asm line 173
+005C0CE4    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 174
+005C0CE8    nop                                                       ; asm/controls/basic_attack_ck.asm line 175
+005C0CEC @@doreload:                                                  ; asm/controls/basic_attack_ck.asm line 176
+005C0CEC    lh      v0,0x8BC(a0)                                      ; asm/controls/basic_attack_ck.asm line 177
+005C0CF0    blez    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 178
+005C0CF4    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 179
+005C0CF8    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 180
+005C0CFC    ori     a2,r0,0x9                                         ; asm/controls/basic_attack_ck.asm line 181
+005C0D00    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 182
+005C0D04    ori     a3,r0,0x5                                         ; asm/controls/basic_attack_ck.asm line 183
+005C0D08    nop                                                       ; asm/controls/basic_attack_ck.asm line 184
+005C0D0C @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 185
+005C0D0C    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 186
+005C0D10    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 187
+005C0D14    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 188
+005C0D18    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 189
+005C0D1C    ori     a2,r0,0x1C                                        ; asm/controls/basic_attack_ck.asm line 190
+005C0D20    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 191
+005C0D24    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 192
+005C0D28    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 193
+005C0D2C    ori     v0,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 194
+005C0D30 hammercase:                                                  ; asm/controls/basic_attack_ck.asm line 195
+005C0D30    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 196
+005C0D34    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 197
+005C0D38    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 198
+005C0D3C    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 203
+005C0D40    beq     v0,v1,0x5C0D5C                                    ; asm/controls/basic_attack_ck.asm line 204
+005C0D44    nop                                                       ; asm/controls/basic_attack_ck.asm line 205
+005C0D48    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 206
+005C0D4C    beq     v0,v1,0x5C0D70                                    ; asm/controls/basic_attack_ck.asm line 207
+005C0D50    nop                                                       ; asm/controls/basic_attack_ck.asm line 208
+005C0D54    b       0x5C0D84                                          ; asm/controls/basic_attack_ck.asm line 209
+005C0D58    nop                                                       ; asm/controls/basic_attack_ck.asm line 210
+005C0D5C @@doside:                                                    ; asm/controls/basic_attack_ck.asm line 211
+005C0D5C    ori     a2,r0,0x16                                        ; asm/controls/basic_attack_ck.asm line 212
+005C0D60    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 213
+005C0D64    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 214
+005C0D68    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 215
+005C0D6C    nop                                                       ; asm/controls/basic_attack_ck.asm line 216
+005C0D70 @@dopound:                                                   ; asm/controls/basic_attack_ck.asm line 217
+005C0D70    ori     a2,r0,0x17                                        ; asm/controls/basic_attack_ck.asm line 218
+005C0D74    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 219
+005C0D78    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 220
+005C0D7C    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 221
+005C0D80    nop                                                       ; asm/controls/basic_attack_ck.asm line 222
+005C0D84 @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 223
+005C0D84    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 224
+005C0D88    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 225
+005C0D8C    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 226
+005C0D90    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 227
+005C0D94    ori     a2,r0,0x1C                                        ; asm/controls/basic_attack_ck.asm line 228
+005C0D98    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 229
+005C0D9C    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 230
+005C0DA0    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 231
+005C0DA4    nop                                                       ; asm/controls/basic_attack_ck.asm line 232
+005C0DA8 lancecase:                                                   ; asm/controls/basic_attack_ck.asm line 233
+005C0DA8    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 234
+005C0DAC    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 235
+005C0DB0    ori     a3,r0,0xC                                         ; asm/controls/basic_attack_ck.asm line 236
+005C0DB4    ori     v1,r0,0x3                                         ; asm/controls/basic_attack_ck.asm line 237
+005C0DB8    beq     v0,v1,0x5C0DE0                                    ; asm/controls/basic_attack_ck.asm line 238
+005C0DBC    nop                                                       ; asm/controls/basic_attack_ck.asm line 239
+005C0DC0    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 240
+005C0DC4    beq     v0,v1,0x5C0DF4                                    ; asm/controls/basic_attack_ck.asm line 241
+005C0DC8    nop                                                       ; asm/controls/basic_attack_ck.asm line 242
+005C0DCC    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 243
+005C0DD0    beq     v0,v1,0x5C0E08                                    ; asm/controls/basic_attack_ck.asm line 244
+005C0DD4    nop                                                       ; asm/controls/basic_attack_ck.asm line 245
+005C0DD8    b       0x5C0E1C                                          ; asm/controls/basic_attack_ck.asm line 246
+005C0DDC    nop                                                       ; asm/controls/basic_attack_ck.asm line 247
+005C0DE0 @@docharge:                                                  ; asm/controls/basic_attack_ck.asm line 248
+005C0DE0    ori     a2,r0,0x22                                        ; asm/controls/basic_attack_ck.asm line 249
+005C0DE4    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 250
+005C0DE8    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 251
+005C0DEC    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 252
+005C0DF0    nop                                                       ; asm/controls/basic_attack_ck.asm line 253
+005C0DF4 @@dohigh:                                                    ; asm/controls/basic_attack_ck.asm line 254
+005C0DF4    ori     a2,r0,0x2D                                        ; asm/controls/basic_attack_ck.asm line 255
+005C0DF8    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 256
+005C0DFC    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 257
+005C0E00    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 258
+005C0E04    nop                                                       ; asm/controls/basic_attack_ck.asm line 259
+005C0E08 @@domed:                                                     ; asm/controls/basic_attack_ck.asm line 260
+005C0E08    ori     a2,r0,0x24                                        ; asm/controls/basic_attack_ck.asm line 261
+005C0E0C    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 262
+005C0E10    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 263
+005C0E14    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 264
+005C0E18    nop                                                       ; asm/controls/basic_attack_ck.asm line 265
+005C0E1C @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 266
+005C0E1C    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 267
+005C0E20    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 268
+005C0E24    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 269
+005C0E28    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 270
+005C0E2C    ori     a2,r0,0x6D                                        ; asm/controls/basic_attack_ck.asm line 271
+005C0E30    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 272
+005C0E34    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 273
+005C0E38    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 274
+005C0E3C    nop                                                       ; asm/controls/basic_attack_ck.asm line 275
+005C0E40 snscase:                                                     ; asm/controls/basic_attack_ck.asm line 276
+005C0E40    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 277
+005C0E44    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 278
+005C0E48    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 279
+005C0E4C    beq     v0,a3,0x5C0E7C                                    ; asm/controls/basic_attack_ck.asm line 280
+005C0E50    ori     v1,r0,0x3                                         ; asm/controls/basic_attack_ck.asm line 281
+005C0E54    beq     v0,v1,0x5C0E90                                    ; asm/controls/basic_attack_ck.asm line 282
+005C0E58    nop                                                       ; asm/controls/basic_attack_ck.asm line 283
+005C0E5C    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 284
+005C0E60    beq     v0,v1,0x5C0EA4                                    ; asm/controls/basic_attack_ck.asm line 285
+005C0E64    nop                                                       ; asm/controls/basic_attack_ck.asm line 286
+005C0E68    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 287
+005C0E6C    beq     v0,v1,0x5C0EB8                                    ; asm/controls/basic_attack_ck.asm line 288
+005C0E70    nop                                                       ; asm/controls/basic_attack_ck.asm line 289
+005C0E74    b       0x5C0ECC                                          ; asm/controls/basic_attack_ck.asm line 290
+005C0E78    nop                                                       ; asm/controls/basic_attack_ck.asm line 291
+005C0E7C @@doupswing:                                                 ; asm/controls/basic_attack_ck.asm line 292
+005C0E7C    ori     a2,r0,0x46                                        ; asm/controls/basic_attack_ck.asm line 293
+005C0E80    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 294
+005C0E84    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 295
+005C0E88    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 296
+005C0E8C    nop                                                       ; asm/controls/basic_attack_ck.asm line 297
+005C0E90 @@dolunge:                                                   ; asm/controls/basic_attack_ck.asm line 298
+005C0E90    ori     a2,r0,0x31                                        ; asm/controls/basic_attack_ck.asm line 299
+005C0E94    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 300
+005C0E98    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 301
+005C0E9C    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 302
+005C0EA0    nop                                                       ; asm/controls/basic_attack_ck.asm line 303
+005C0EA4 @@doside:                                                    ; asm/controls/basic_attack_ck.asm line 304
+005C0EA4    ori     a2,r0,0x33                                        ; asm/controls/basic_attack_ck.asm line 305
+005C0EA8    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 306
+005C0EAC    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 307
+005C0EB0    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 308
+005C0EB4    nop                                                       ; asm/controls/basic_attack_ck.asm line 309
+005C0EB8 @@docombo:                                                   ; asm/controls/basic_attack_ck.asm line 310
+005C0EB8    ori     a2,r0,0x30                                        ; asm/controls/basic_attack_ck.asm line 311
+005C0EBC    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 312
+005C0EC0    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 313
+005C0EC4    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 314
+005C0EC8    nop                                                       ; asm/controls/basic_attack_ck.asm line 315
+005C0ECC @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 316
+005C0ECC    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 317
+005C0ED0    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 318
+005C0ED4    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 319
+005C0ED8    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 320
+005C0EDC    ori     a2,r0,0x1C                                        ; asm/controls/basic_attack_ck.asm line 321
+005C0EE0    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 322
+005C0EE4    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 323
+005C0EE8    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 324
+005C0EEC    nop                                                       ; asm/controls/basic_attack_ck.asm line 325
+005C0EF0 dbcase:                                                      ; asm/controls/basic_attack_ck.asm line 326
+005C0EF0    jal     0x31E000                                          ; asm/controls/basic_attack_ck.asm line 327
+005C0EF4    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 328
+005C0EF8    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 329
+005C0EFC    beq     v0,a3,0x5C0F50                                    ; asm/controls/basic_attack_ck.asm line 330
+005C0F00    ori     v1,r0,0x3                                         ; asm/controls/basic_attack_ck.asm line 331
+005C0F04    beq     v0,v1,0x5C0F68                                    ; asm/controls/basic_attack_ck.asm line 332
+005C0F08    nop                                                       ; asm/controls/basic_attack_ck.asm line 333
+005C0F0C    ori     v1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 334
+005C0F10    beq     v0,v1,0x5C0F2C                                    ; asm/controls/basic_attack_ck.asm line 335
+005C0F14    nop                                                       ; asm/controls/basic_attack_ck.asm line 336
+005C0F18    ori     v1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 337
+005C0F1C    beq     v0,v1,0x5C0F80                                    ; asm/controls/basic_attack_ck.asm line 338
+005C0F20    nop                                                       ; asm/controls/basic_attack_ck.asm line 339
+005C0F24    b       0x5C0F94                                          ; asm/controls/basic_attack_ck.asm line 340
+005C0F28    nop                                                       ; asm/controls/basic_attack_ck.asm line 341
+005C0F2C @@dospinright:                                               ; asm/controls/basic_attack_ck.asm line 342
+005C0F2C    lhu     v1,0x378(s0)                                      ; asm/controls/basic_attack_ck.asm line 343
+005C0F30    andi    v1,0x800                                          ; asm/controls/basic_attack_ck.asm line 344
+005C0F34    bnez    v1,0x5C0F50                                       ; asm/controls/basic_attack_ck.asm line 345
+005C0F38    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 346
+005C0F3C    ori     a1,r0,0x0                                         ; asm/controls/basic_attack_ck.asm line 347
+005C0F40    jal     0x5C0960                                          ; asm/controls/basic_attack_ck.asm line 348
+005C0F44    dmove   a2,zero                                           ; asm/controls/basic_attack_ck.asm line 349
+005C0F48    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 350
+005C0F4C    nop                                                       ; asm/controls/basic_attack_ck.asm line 351
+005C0F50 @@dospinleft:                                                ; asm/controls/basic_attack_ck.asm line 352
+005C0F50    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 353
+005C0F54    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 354
+005C0F58    jal     0x5C0960                                          ; asm/controls/basic_attack_ck.asm line 355
+005C0F5C    dmove   a2,zero                                           ; asm/controls/basic_attack_ck.asm line 356
+005C0F60    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 357
+005C0F64    nop                                                       ; asm/controls/basic_attack_ck.asm line 358
+005C0F68 @@dolunge:                                                   ; asm/controls/basic_attack_ck.asm line 359
+005C0F68    dmove   a0,s0                                             ; asm/controls/basic_attack_ck.asm line 360
+005C0F6C    ori     a1,r0,0x2                                         ; asm/controls/basic_attack_ck.asm line 361
+005C0F70    jal     0x5C0960                                          ; asm/controls/basic_attack_ck.asm line 362
+005C0F74    dmove   a2,zero                                           ; asm/controls/basic_attack_ck.asm line 363
+005C0F78    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 364
+005C0F7C    nop                                                       ; asm/controls/basic_attack_ck.asm line 365
+005C0F80 @@docombo:                                                   ; asm/controls/basic_attack_ck.asm line 366
+005C0F80    ori     a2,r0,0x55                                        ; asm/controls/basic_attack_ck.asm line 367
+005C0F84    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 368
+005C0F88    ori     a1,r0,0x1                                         ; asm/controls/basic_attack_ck.asm line 369
+005C0F8C    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 370
+005C0F90    nop                                                       ; asm/controls/basic_attack_ck.asm line 371
+005C0F94 @@checkroll:                                                 ; asm/controls/basic_attack_ck.asm line 372
+005C0F94    jal     0x31E070                                          ; asm/controls/basic_attack_ck.asm line 373
+005C0F98    dmove   a3,a0                                             ; asm/controls/basic_attack_ck.asm line 374
+005C0F9C    beqz    v0,0x5C1098                                       ; asm/controls/basic_attack_ck.asm line 375
+005C0FA0    dmove   a1,zero                                           ; asm/controls/basic_attack_ck.asm line 376
+005C0FA4    ori     a2,r0,0x1C                                        ; asm/controls/basic_attack_ck.asm line 377
+005C0FA8    jal     0x580840                                          ; asm/controls/basic_attack_ck.asm line 378
+005C0FAC    ori     a3,r0,0x4                                         ; asm/controls/basic_attack_ck.asm line 379
+005C0FB0    b       0x5C1098                                          ; asm/controls/basic_attack_ck.asm line 380
+005C0FB4    nop                                                       ; asm/controls/basic_attack_ck.asm line 381
+005C1098 @return:                                                     ; asm/controls/basic_attack_ck.asm line 383
+005C0FB8 .org 0x005C1098                                              ; asm/controls/basic_attack_ck.asm line 384
+005C1098    ld      ra,0x10(sp)                                       ; asm/controls/basic_attack_ck.asm line 385
+005C109C    lq      s0,(sp)                                           ; asm/controls/basic_attack_ck.asm line 386
+005C10A0    jr      ra                                                ; asm/controls/basic_attack_ck.asm line 387
+005C10A4    addiu   sp,0x20                                           ; asm/controls/basic_attack_ck.asm line 388
+005C10A8    nop                                                       ; asm/controls/basic_attack_ck.asm line 389
+005C10AC .org 0x007266A0                                              ; asm/controls/basic_attack_ck.asm line 391
+007266A0 .word 0x005C0B18                                             ; asm/controls/basic_attack_ck.asm line 392
+007266A4 .word 0x005C0BC8                                             ; asm/controls/basic_attack_ck.asm line 393
+007266A8 .word 0x005C0D30                                             ; asm/controls/basic_attack_ck.asm line 394
+007266AC .word 0x005C0DA8                                             ; asm/controls/basic_attack_ck.asm line 395
+007266B0 .word 0x005C0E40                                             ; asm/controls/basic_attack_ck.asm line 396
+007266B4 .word 0x005C0BC8                                             ; asm/controls/basic_attack_ck.asm line 397
+007266B8 .word 0x005C0EF0                                             ; asm/controls/basic_attack_ck.asm line 398
+007266BC .close                                                       ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 25
+FFFFFFFF .open "unpacked/lobby.bin","lobby.bin",0x005BE900            ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 26
+005BE900 .close                                                       ; D:\pcsx2\MH\1USA Modding\Clean/main.asm line 28
