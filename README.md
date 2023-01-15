@@ -3,7 +3,8 @@ MH1Plus is an improvement patch for Monster Hunter (North America, PS2) Game Cod
 
 # Usage
 ## Download
-  Head over to the releases tab on the right and apply the downloaded file to a clean MH1 US iso using xdelta.
+  Go to https://github.com/GReinoso96/MH1Plus/releases/tag/Release
+  Download the patch you want and apply with an xdelta patcher.
 
 ## Set-Up
   First, you must supply the following:
